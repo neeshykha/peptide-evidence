@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peptide Evidence Brief — index</title>
+<style>
+:root{
+  --bg:#faf9f7; --panel:#fff; --ink:#1a1a1a; --ink-2:#4a4a48; --ink-3:#78766f;
+  --line:#e3e0da; --line-2:#efece7;
+  --accent:#7a3b2e; --accent-soft:#f3ebe8;
+  --warn:#9a6a12; --warn-soft:#fdf4e3;
+  --bad:#8c2f2f; --bad-soft:#faecec;
+  --ok:#2f5f45; --ok-soft:#e9f2ec;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#16150f; --panel:#1e1d17; --ink:#eceae4; --ink-2:#bdbab2; --ink-3:#8d8a82;
+  --line:#332f26; --line-2:#282419; --accent:#d9856f; --accent-soft:#2a1e19;
+  --warn:#dfae5c; --warn-soft:#2b2213; --bad:#e08585; --bad-soft:#2d1a1a;
+  --ok:#7fbb98; --ok-soft:#16241c;}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{display:flex;align-items:flex-start;max-width:1500px;margin:0 auto}
+
+aside{position:sticky;top:0;height:100vh;overflow-y:auto;width:248px;flex:0 0 248px;
+  border-right:1px solid var(--line);padding:26px 16px 40px;background:var(--panel)}
+aside h1{font-size:14px;margin:0 0 3px;font-weight:670;line-height:1.35}
+aside .sub{font-size:11px;color:var(--ink-3);margin-bottom:18px;line-height:1.45}
+nav a{display:block;text-decoration:none;color:var(--ink-2);font-size:12.6px;padding:5px 9px;
+  border-radius:5px;border-left:2px solid transparent;line-height:1.35}
+nav a:hover{background:var(--accent-soft);color:var(--ink)}
+nav a.on{border-left-color:var(--accent);color:var(--ink);font-weight:600;background:var(--accent-soft)}
+nav .grp{font-size:9.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-3);
+  margin:16px 0 5px;padding-left:9px;font-weight:680}
+nav a.sm{padding-left:19px;font-size:12.2px;color:var(--ink-3)}
+
+main{flex:1;min-width:0;padding:34px 40px 120px;max-width:1120px}
+section{margin-bottom:50px;scroll-margin-top:20px}
+h2{font-size:22px;margin:0 0 4px;letter-spacing:-.02em;font-weight:670}
+h2 .num{color:var(--ink-3);font-weight:400;font-size:15px;margin-right:9px;font-variant-numeric:tabular-nums}
+h3{font-size:15.5px;margin:26px 0 8px;font-weight:650}
+p{margin:0 0 12px;color:var(--ink-2)}
+.lede{font-family:var(--serif);font-size:17px;line-height:1.62;color:var(--ink);margin-bottom:20px}
+.dek{color:var(--ink-3);font-size:13px;margin:0 0 20px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+strong{color:var(--ink);font-weight:640}
+a{color:var(--accent)}
+ul,ol{margin:0 0 13px;padding-left:20px;color:var(--ink-2)} li{margin-bottom:5px}
+code{font-family:var(--mono);font-size:12px;background:var(--line-2);padding:1.5px 5px;border-radius:3px;color:var(--ink)}
+
+.mast{border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:24px 26px;margin-bottom:32px}
+.mast h1{font-size:28px;margin:0 0 7px;letter-spacing:-.03em;line-height:1.15;font-weight:690}
+.mast .meta{font-size:11.5px;color:var(--ink-3);font-family:var(--mono);margin-bottom:16px}
+.scope{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.scope div{padding:12px 14px;border-radius:7px;font-size:12.6px;line-height:1.5}
+.scope .is{background:var(--ok-soft);border:1px solid color-mix(in srgb,var(--ok) 22%,transparent)}
+.scope .isnt{background:var(--bad-soft);border:1px solid color-mix(in srgb,var(--bad) 22%,transparent)}
+.scope b{display:block;margin-bottom:3px;font-size:10.5px;text-transform:uppercase;letter-spacing:.07em}
+.scope .is b{color:var(--ok)} .scope .isnt b{color:var(--bad)}
+.phases{display:flex;gap:5px;margin-top:18px;flex-wrap:wrap}
+.ph{flex:1;min-width:104px;padding:9px 11px;border-radius:6px;border:1px solid var(--line);font-size:11.3px;background:var(--bg)}
+.ph b{display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);margin-bottom:2px}
+.ph.done{background:var(--ok-soft);border-color:color-mix(in srgb,var(--ok) 30%,transparent)} .ph.done b{color:var(--ok)}
+.ph.part{background:var(--warn-soft);border-color:color-mix(in srgb,var(--warn) 30%,transparent)} .ph.part b{color:var(--warn)}
+
+table{width:100%;border-collapse:collapse;font-size:12.8px;margin:12px 0 16px}
+th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);
+  padding:8px 9px;border-bottom:1.5px solid var(--line);font-weight:680;vertical-align:bottom}
+td{padding:9px 9px;border-bottom:1px solid var(--line-2);vertical-align:top;color:var(--ink-2)}
+tr:last-child td{border-bottom:none} td strong{color:var(--ink)}
+table.sortable th{cursor:pointer;user-select:none}
+table.sortable th:hover{color:var(--accent)}
+table.sortable th::after{content:"↕";opacity:.28;margin-left:5px;font-size:9px}
+table.sortable th.asc::after{content:"↑";opacity:.9;color:var(--accent)}
+table.sortable th.desc::after{content:"↓";opacity:.9;color:var(--accent)}
+.panel{border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:4px 16px;margin-bottom:16px}
+
+/* group cell */
+.grp2{display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);font-weight:680;margin-bottom:3px}
+.use{display:block;font-size:12.2px;color:var(--ink-2);line-height:1.42}
+.vs{display:block;font-size:10.8px;color:var(--warn);margin-top:5px;padding-top:4px;
+  border-top:1px dotted color-mix(in srgb,var(--warn) 38%,transparent);line-height:1.35}
+.vs b{color:var(--warn);font-weight:680}
+.vs.ok{color:var(--ok);border-top-color:color-mix(in srgb,var(--ok) 34%,transparent)}
+.vs.ok b{color:var(--ok)}
+
+.chip{display:inline-block;font-size:10.5px;font-weight:680;padding:2px 7px;border-radius:4px;font-family:var(--mono);white-space:nowrap}
+.L1,.L2{background:var(--ok-soft);color:var(--ok)}
+.L3,.L4{background:var(--warn-soft);color:var(--warn)}
+.L5{background:var(--bad-soft);color:var(--bad)}
+.Direct{background:var(--ok-soft);color:var(--ok)}
+.Adjacent{background:var(--warn-soft);color:var(--warn)}
+.Mismatched{background:var(--bad-soft);color:var(--bad)}
+.Concentrated{background:var(--warn-soft);color:var(--warn)}
+.pend{background:var(--line-2);color:var(--ink-3)}
+.flag{display:inline-block;font-size:9.5px;font-family:var(--mono);font-weight:680;padding:2px 5px;
+  border-radius:4px;background:var(--bad-soft);color:var(--bad);margin:0 3px 3px 0;white-space:nowrap}
+.flag.sel{background:var(--warn-soft);color:var(--warn)}
+
+.call{border-left:3px solid var(--accent);background:var(--accent-soft);padding:13px 16px;
+  border-radius:0 7px 7px 0;margin:16px 0;font-size:13.3px}
+.call.w{border-left-color:var(--warn);background:var(--warn-soft)}
+.call.b{border-left-color:var(--bad);background:var(--bad-soft)}
+.call b.hd{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px;color:var(--accent);font-weight:700}
+.call.w b.hd{color:var(--warn)} .call.b b.hd{color:var(--bad)}
+.call p:last-child{margin-bottom:0}
+blockquote{margin:12px 0;padding:10px 16px;border-left:2px solid var(--line);
+  font-family:var(--serif);font-size:14px;color:var(--ink-2);font-style:italic}
+.prov{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin:9px 0 0;
+  padding:7px 10px;background:var(--line-2);border-radius:5px;line-height:1.55}
+.lfs{color:var(--warn);font-weight:680} .ret{color:var(--ok);font-weight:680}
+
+details{border:1px solid var(--line);border-radius:8px;margin-bottom:10px;background:var(--panel);overflow:hidden}
+details[open]{border-color:color-mix(in srgb,var(--accent) 26%,var(--line))}
+summary{cursor:pointer;padding:12px 16px;font-weight:620;font-size:13.8px;list-style:none;display:flex;align-items:center;gap:9px}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸";color:var(--ink-3);font-size:11px;transition:transform .15s;flex:0 0 auto}
+details[open] summary::before{transform:rotate(90deg)}
+summary:hover{background:var(--accent-soft)}
+.dbody{padding:3px 16px 14px;border-top:1px solid var(--line-2)}
+.tag{margin-left:auto;font-size:10px;font-weight:600;color:var(--ink-3);font-family:var(--mono)}
+
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin:11px 0 3px}
+.fb{font-size:11.5px;padding:4px 11px;border-radius:14px;border:1px solid var(--line);
+  background:var(--panel);color:var(--ink-2);cursor:pointer;font-family:var(--sans);transition:.12s}
+.fb:hover{border-color:var(--accent);color:var(--accent)}
+.fb.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.count{font-size:11.5px;color:var(--ink-3);margin:9px 0 0;font-family:var(--mono)}
+.open{font-size:10px;font-family:var(--mono);color:var(--accent);text-decoration:none;display:block;margin-top:3px}
+.open:hover{text-decoration:underline}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:5px 16px;font-size:13px;margin:12px 0}
+.kv dt{color:var(--ink-3);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;padding-top:3px;font-weight:650}
+.kv dd{margin:0;color:var(--ink-2)}
+.foot{border-top:1px solid var(--line);padding-top:16px;font-size:11.3px;color:var(--ink-3);margin-top:42px}
+
+@media(max-width:940px){aside{display:none} main{padding:22px 16px 70px} .scope{grid-template-columns:1fr}}
+@media print{aside{display:none} main{max-width:none;padding:0} details>.dbody{display:block!important} .filters{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<aside>
+  <h1>Peptide Evidence Brief</h1>
+  <div class="sub">Commercial peptide catalogue (51 SKUs)<br>Protocol v1.0 · 8 Aug 2026</div>
+  <nav id="nav">
+    <a href="#top" class="on">Overview</a>
+    <a href="#corrections">Scope corrections</a>
+    <a href="#findings">Key findings</a>
+    <a href="#grades">Grade table</a>
+    <a href="#inventory">Catalogue inventory</a>
+    <div class="grp">Sources</div>
+    <a href="#docket">FDA PCAC docket</a>
+    <a href="#votes">Vote record — provenance</a>
+    <div class="grp">Records</div>
+    <a href="compounds/bpc-157.html" class="sm">BPC-157 ↗</a>
+    <a href="compounds/pt-141.html" class="sm">PT-141 ↗</a>
+    <a href="compounds/tesamorelin.html" class="sm">Tesamorelin ↗</a>
+    <a href="compounds/ipamorelin.html" class="sm">Ipamorelin ↗</a>
+    <a href="#queue" class="sm">Queue (39 pending)</a>
+    <div class="grp">Apparatus</div>
+    <a href="#method">Method &amp; rubric</a>
+    <a href="#limits">Limitations</a>
+  </nav>
+</aside>
+
+<main>
+
+<div class="mast" id="top">
+  <h1>What is and isn't established about a commercial peptide catalogue</h1>
+  <div class="meta">Updated 2026-08-09 · Protocol v1.0 · 51 SKUs · 4 of 43 records complete</div>
+  <p class="lede">An evidence map of a class of widely-used compounds, graded on three independent axes, with every claim carrying a source and a retrieval status — and every gap stated rather than smoothed over.</p>
+  <div class="scope">
+    <div class="is"><b>What this is</b>A description of the evidence: what was studied, in what species, by what route, at what dose, and what happened. Absences are recorded as findings with dates.</div>
+    <div class="isnt"><b>What this is not</b>Not a purchasing guide. No dosing protocols, no administration guidance, no sourcing advice, no recommendations. Doses appear only as facts, for the route/dose mismatch check.</div>
+  </div>
+  <div class="phases">
+    <div class="ph done"><b>Phase 0</b>Inventory complete</div>
+    <div class="ph part"><b>Phase 1</b>Docket verified, 1/7 extracted</div>
+    <div class="ph part"><b>Phase 2</b>4/43 records</div>
+    <div class="ph"><b>Phase 4</b>Audit not started</div>
+    <div class="ph"><b>Phase 5</b>Synthesis blocked</div>
+  </div>
+</div>
+
+<section id="corrections">
+  <h2><span class="num">01</span>Scope corrections</h2>
+  <p class="dek">The working assumptions going in were wrong in four ways. Recorded because scope discovered mid-project invalidates batching.</p>
+  <table>
+    <thead><tr><th style="width:36%">Assumption</th><th>What the catalogue actually shows</th></tr></thead>
+    <tbody>
+      <tr><td>~40 catalogue items</td><td><strong>51 SKUs</strong>, resolving to <strong>43 distinct compounds and blends</strong>. Under-counted by roughly a third.</td></tr>
+      <tr><td>A full Khavinson bioregulator line — Chonluten, Pinealon, Cortagen, Prostamax, Vilon, Thymalin</td><td><strong>None of these are stocked.</strong> The Khavinson-type line is exactly three: Epitalon, Cartalax, Bronchogen.</td></tr>
+      <tr><td>Adamax and Bronchogen were missed by the prior pass</td><td><strong>Correct.</strong> Both present, both added July 2026 per image upload paths.</td></tr>
+      <tr><td>—</td><td><strong>13 compounds went unanticipated entirely:</strong> LL-37, VIP, ARA-290, Snap-8, AHK-cu, AOD-9604, Thymosin α1, Survodutide, Sermorelin, Cagrilintide, DSIP, Melanotan I, Lipo-C.</td></tr>
+    </tbody>
+  </table>
+  <div class="call b"><b class="hd">Consequence</b>
+    <p>Semax itself <strong>is not sold</strong> — only N-acetyl semax amidate and Adamax, both analogues that inherit nothing. So FDA's Semax review, one of the seven, attaches to <em>no</em> catalogue item directly. That is the reverse of the assumption going in.</p></div>
+</section>
+
+<section id="findings">
+  <h2><span class="num">02</span>Key findings so far</h2>
+  <p class="dek">From one completed record and the catalogue enumeration. Ironic findings held to a higher evidentiary bar, not a lower one.</p>
+
+  <details open><summary>DSIP is emideltide — the one compound the committee rejected<span class="tag">verified</span></summary>
+    <div class="dbody">
+      <p>The catalogue sells <strong>DSIP 10mg</strong> at $178/kit. FDA's meeting page states that the substance it reviewed as <em>Emideltide</em> is "also referred to as delta sleeping inducing peptide (DSIP)."</p>
+      <p>So the only one of the seven the PCAC declined to recommend is stocked here under its non-INN name. A direct identity link from a primary source, not an inference.</p>
+      <div class="prov">source: FDA Advisory Committee Calendar, July 23–24 2026 PCAC meeting page · retrieval: <span class="ret">retrieved</span></div>
+    </div></details>
+
+  <details open><summary>FDA found no clinical studies of BPC-157 in tendonitis<span class="tag">load-bearing</span></summary>
+    <div class="dbody">
+      <p>BPC-157 was nominated for ulcerative colitis, Crohn's, celiac <em>and tendonitis</em>. FDA evaluated only UC, stating in footnote 4:</p>
+      <blockquote>"FDA did not evaluate the proposed uses of Crohn's disease, Celiac disease, and tendonitis because the nomination did not include sufficient information … In addition, <strong>FDA did not identify clinical studies using BPC-157 in these populations.</strong>"</blockquote>
+      <p>A dated, primary-source statement of absence covering the musculoskeletal indication that drives essentially all demand.</p>
+      <div class="prov">source: FDA Briefing Document, BPC-157-related BDSs, 11 May 2026, fn. 4 · retrieval: <span class="ret">retrieved</span></div>
+    </div></details>
+
+  <details open><summary>Popularity runs inverse to clinical footprint<span class="tag">partly corroborated</span></summary>
+    <div class="dbody">
+      <p>FDA's outsourcing-facility database recorded <strong>zero</strong> compounded BPC-157 products between January 2017 and June 2025. Over the same period, per a paper FDA quotes, June 2024 search volume hit an all-time high with more than 50 million tagged video views on each of YouTube and TikTok.</p>
+      <p>Exactly the kind of finding a writer is drawn to, so: the database figure is a direct regulatory record; the social figure is attributed to Vasireddi et al. 2025 which has <span class="lfs">not been opened</span>. The regulatory half stands; the social half is provisional.</p>
+      <div class="prov">source: FDA Briefing Document §II.B.3 · retrieval: <span class="ret">retrieved</span> (database) / <span class="lfs">⚠ learned-from-summary</span> (Vasireddi 2025)</div>
+    </div></details>
+
+  <details open><summary>Every nomination was withdrawn before the meeting<span class="tag">verified</span></summary>
+    <div class="dbody">
+      <p>All nominations — LDT Health Solutions on behalf of the International Peptide Society, and Wells Pharmacy Network — were <strong>withdrawn by the nominator</strong> before the July meeting. FDA proceeded with all seven evaluations anyway, on its own initiative.</p>
+      <p>Bears on Source Independence, and withdrawing a nomination is an unusual posture for a substance its proponents are said to believe in.</p>
+      <div class="prov">source: FDA Briefing Document Introduction, footnotes 1–11 · retrieval: <span class="ret">retrieved</span></div>
+    </div></details>
+</section>
+
+<section id="grades">
+  <h2><span class="num">03</span>Grade table</h2>
+  <p class="dek">Three independent axes, never averaged. The <strong>Class · sold for</strong> column carries what the compound is actually used for anecdotally, against what was actually studied — the gap between those two is the highest-yield finding in the project. Click a column to sort.</p>
+
+  <div class="filters">
+    <button class="fb on" data-f="all">All</button>
+    <button class="fb" data-f="done">Graded</button>
+    <button class="fb" data-f="pcac">PCAC-reviewed</button>
+    <button class="fb" data-f="gap">Indication gap</button>
+    <button class="fb" data-f="blend">Blends</button>
+    <button class="fb" data-f="ident">⚠ Identity</button>
+  </div>
+
+  <div class="panel">
+  <table class="sortable" id="gt">
+    <thead><tr>
+      <th style="width:15%">Compound</th><th style="width:29%">Class · sold for</th><th>Evidence</th><th>Indication</th><th>Independence</th><th>Flags</th>
+    </tr></thead>
+    <tbody>
+      <tr data-c="done pcac ident gap"><td><strong>BPC-157</strong><a class="open" href="compounds/bpc-157.html">open record ↗</a></td>
+        <td><span class="grp2">Repair</span><span class="use">Tendon, ligament and joint healing; gut repair; "wolverine compound"</span><span class="vs"><b>FDA studied:</b> ulcerative colitis. No clinical studies in tendonitis</span></td>
+        <td><span class="chip L4">L4</span> UC only<br><span class="chip L5">L5</span> as marketed</td>
+        <td><span class="chip Mismatched">Mismatched</span></td><td><span class="chip Concentrated">Concentrated</span></td>
+        <td><span class="flag">IDENTITY</span><span class="flag">ROUTE/DOSE</span><span class="flag sel">SELECTION</span></td></tr>
+
+      <tr data-c="pcac"><td>KPV</td>
+        <td><span class="grp2">Repair · immune</span><span class="use">Gut inflammation, IBD, skin conditions, wound healing</span><span class="vs ok"><b>FDA studied:</b> wound healing and inflammatory conditions — closest alignment of the seven</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr data-c="pcac ident"><td>TB-500 / TB4</td>
+        <td><span class="grp2">Repair</span><span class="use">Tendon and muscle injury recovery, flexibility, "stacked" with BPC-157</span><span class="vs"><b>FDA studied:</b> wound healing — and reviewed "TB-500", while the vendor sells "TB4"</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td><span class="flag">IDENTITY</span></td></tr>
+
+      <tr data-c="pcac gap"><td>MOTS-c</td>
+        <td><span class="grp2">Metabolic</span><span class="use">Mitochondrial energy, fat loss, "exercise mimetic", endurance</span><span class="vs"><b>FDA studied:</b> obesity and osteoporosis — not energy or endurance</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr data-c="pcac"><td>DSIP <em>(emideltide)</em></td>
+        <td><span class="grp2">Sleep</span><span class="use">Sleep onset and quality, insomnia</span><span class="vs ok"><b>FDA studied:</b> opioid withdrawal, chronic insomnia, narcolepsy. <b>Rejected by the committee</b></span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr data-c="pcac gap"><td>Epitalon</td>
+        <td><span class="grp2">Khavinson · longevity</span><span class="use">Telomere lengthening, anti-aging, lifespan, pineal/sleep</span><span class="vs"><b>FDA studied:</b> insomnia only — not longevity or telomeres</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr data-c="pcac ident gap"><td>Semax <em>(not sold)</em></td>
+        <td><span class="grp2">Nootropic</span><span class="use">Focus, cognition, neuroprotection, ADHD</span><span class="vs"><b>FDA studied:</b> cerebral ischemia, migraine, trigeminal neuralgia. <b>Not stocked</b> — only analogues</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td><span class="flag">IDENTITY</span></td></tr>
+
+      <tr data-c="ident"><td>N-Acetyl Semax Amidate</td>
+        <td><span class="grp2">Nootropic · analogue</span><span class="use">Focus, cognition, mood, verbal fluency</span><span class="vs"><b>Inherits nothing</b> from Semax — graded on its own evidence</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td><span class="flag">IDENTITY</span></td></tr>
+
+      <tr data-c="ident"><td>N-Acetyl Selank Amidate</td>
+        <td><span class="grp2">Nootropic · analogue</span><span class="use">Anxiety reduction, calm focus, stress tolerance</span><span class="vs"><b>Inherits nothing</b> from Selank</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td><span class="flag">IDENTITY</span></td></tr>
+
+      <tr data-c="ident"><td>Adamax</td>
+        <td><span class="grp2">Nootropic · analogue</span><span class="use">Cognition, memory, learning — premium positioning at $388/kit</span><span class="vs"><b>Identity unconfirmed.</b> Adamantane-conjugated Semax-type, per vendor framing only</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td><span class="flag">IDENTITY</span></td></tr>
+
+      <tr data-c="ident"><td>PDA</td>
+        <td><span class="grp2">Repair · analogue</span><span class="use">Marketed as a more stable "BPC-157 upgrade" — tendon and gut healing</span><span class="vs"><b>Inherits nothing</b> from BPC-157. Vendor-stated identity only</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td><span class="flag">IDENTITY</span></td></tr>
+
+      <tr data-c="ident"><td>TB500 Frag 17-23</td>
+        <td><span class="grp2">Repair · fragment</span><span class="use">Injury recovery — sold as the "active fragment" of TB4</span><span class="vs"><b>Inherits nothing</b> from thymosin β4</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td><span class="flag">IDENTITY</span></td></tr>
+
+      <tr><td>LL-37</td>
+        <td><span class="grp2">Immune · antimicrobial</span><span class="use">Chronic infection, gut biofilm, SIBO, "mold illness"</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr><td>Cartalax</td>
+        <td><span class="grp2">Khavinson</span><span class="use">Cartilage and joint support, connective tissue</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr data-c="ident"><td>Bronchogen</td>
+        <td><span class="grp2">Khavinson</span><span class="use">Lung and respiratory function, chronic bronchitis</span><span class="vs"><b>Sequence conflict unresolved:</b> AEDL vs ADEL are different molecules</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td><span class="flag">IDENTITY</span></td></tr>
+
+      <tr data-c="done gap"><td><strong>Tesamorelin</strong><a class="open" href="compounds/tesamorelin.html">open record ↗</a></td>
+        <td><span class="grp2">GH-axis · approved</span><span class="use">Visceral fat loss, body recomposition, anti-aging</span><span class="vs"><b>Approved for:</b> HIV-associated lipodystrophy only. Label states "not indicated for weight loss management"</span></td>
+        <td><span class="chip L1">L1</span> HIV lipo<br><span class="chip L5">L5</span> as marketed</td>
+        <td><span class="chip Mismatched">Mismatched</span></td><td><span class="chip Concentrated">Concentrated</span></td>
+        <td><span class="flag">ROUTE/DOSE</span><span class="flag sel">SELECTION</span></td></tr>
+
+      <tr data-c="done gap"><td><strong>PT-141</strong><a class="open" href="compounds/pt-141.html">open record ↗</a></td>
+        <td><span class="grp2">Sexual function · approved</span><span class="use">Libido and arousal, both sexes, on-demand</span><span class="vs"><b>Approved for:</b> HSDD in premenopausal women, 1.75mg/dose. Vial is 10mg. Desire moved; satisfying events did not</span></td>
+        <td><span class="chip L1">L1</span> HSDD<br><span class="chip L5">L5</span> as marketed</td>
+        <td><span class="chip Mismatched">Mismatched</span></td><td><span class="chip Concentrated">Concentrated</span></td>
+        <td><span class="flag">ROUTE/DOSE</span><span class="flag sel">SELECTION</span></td></tr>
+
+      <tr data-c="gap"><td>Melanotan I</td>
+        <td><span class="grp2">Melanocortin · approved</span><span class="use">Tanning, sun tolerance, photoprotection</span><span class="vs"><b>Approved as:</b> a subcutaneous implant for erythropoietic protoporphyria — not a vial</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr><td>Melanotan II</td>
+        <td><span class="grp2">Melanocortin</span><span class="use">Tanning, libido, appetite suppression</span><span class="vs"><b>Has adverse-event literature</b> — gets a dedicated safety section</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr data-c="gap"><td>Thymosin α1</td>
+        <td><span class="grp2">Immune · approved abroad</span><span class="use">Immune support, chronic infection, "immune resilience", long COVID</span><span class="vs"><b>Approved for:</b> hepatitis B and as a vaccine adjuvant, ~35 countries, not the US</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr data-c="gap"><td>Sermorelin</td>
+        <td><span class="grp2">GH-axis · withdrawn</span><span class="use">GH support, sleep quality, body composition, anti-aging</span><span class="vs"><b>US approval withdrawn 2008.</b> Was approved for paediatric GH deficiency</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr data-c="gap"><td>VIP</td>
+        <td><span class="grp2">Immune · neuro</span><span class="use">CIRS, "mold illness", chronic inflammatory response, usually intranasal</span><span class="vs"><b>Aviptadil approved for:</b> pulmonary arterial hypertension (EU) — not CIRS</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr data-c="ident"><td>NXP-1P <em>→ semaglutide</em></td>
+        <td><span class="grp2">Metabolic · approved</span><span class="use">Weight loss</span><span class="vs"><b>Identity inferred</b> from image filename, not a COA. Trial evidence attaches to a GMP formulation a research vial does not inherit</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td><span class="flag">IDENTITY</span></td></tr>
+
+      <tr data-c="ident"><td>NXP-2P <em>→ tirzepatide</em></td>
+        <td><span class="grp2">Metabolic · approved</span><span class="use">Weight loss</span><span class="vs"><b>Identity inferred</b> from image filename, not a COA</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td><span class="flag">IDENTITY</span></td></tr>
+
+      <tr data-c="ident"><td>NXP-3P <em>→ retatrutide</em></td>
+        <td><span class="grp2">Metabolic · investigational</span><span class="use">Weight loss — the most aggressive of the incretin class</span><span class="vs"><b>Identity inferred.</b> Evidence is largely topline releases → grades will carry <code>(provisional)</code></span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td><span class="flag">IDENTITY</span></td></tr>
+
+      <tr data-c="ident"><td>NXP-ATP</td>
+        <td><span class="grp2">Unknown</span><span class="use">Unstated. $440/kit — the second-priciest SKU in the catalogue</span><span class="vs"><b>No identity evidence of any kind.</b> Recorded as unresolved rather than guessed</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td><span class="flag">IDENTITY</span></td></tr>
+
+      <tr><td>Survodutide</td>
+        <td><span class="grp2">Metabolic · investigational</span><span class="use">Weight loss, metabolic liver disease</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr><td>Cagrilintide</td>
+        <td><span class="grp2">Metabolic · investigational</span><span class="use">Appetite suppression, weight loss — usually stacked with a GLP-1</span><span class="vs"><b>Sponsor programme studies it in combination</b>, not alone</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr><td>ARA-290</td>
+        <td><span class="grp2">Neuro · investigational</span><span class="use">Small-fibre neuropathy, neuropathic pain, sarcoidosis</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr data-c="done gap"><td><strong>Ipamorelin</strong><a class="open" href="compounds/ipamorelin.html">open record ↗</a></td>
+        <td><span class="grp2">GH-axis</span><span class="use">GH pulse, sleep quality, recovery, lean mass, anti-aging</span><span class="vs"><b>Only clinical endpoint ever tested:</b> post-operative ileus — 25.3 vs 32.6 h, p=0.15, not advanced. Zero trials in any marketed use</span></td>
+        <td><span class="chip L2">L2</span> GH release<br><span class="chip L5">L5</span> as marketed</td>
+        <td><span class="chip Mismatched">Mismatched</span></td><td><span class="chip Concentrated">Concentrated</span></td>
+        <td><span class="flag">ROUTE/DOSE</span></td></tr>
+
+      <tr><td>CJC-1295 no DAC</td>
+        <td><span class="grp2">GH-axis</span><span class="use">GH pulse, body composition — usually stacked with ipamorelin</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr><td>AOD-9604</td>
+        <td><span class="grp2">GH-axis · fragment</span><span class="use">Fat loss without GH side effects</span><span class="vs"><b>Failed obesity trials exist</b> — must appear in counterbalancing findings</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr data-c="gap"><td>GHK-Cu</td>
+        <td><span class="grp2">Cosmetic</span><span class="use">Skin firmness, collagen, hair growth, wound healing — topical and injected</span><span class="vs"><b>Reference case for a broken chain:</b> biology is solid, molecule largely does not cross intact skin</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr><td>AHK-Cu</td>
+        <td><span class="grp2">Cosmetic</span><span class="use">Hair growth and follicle stimulation, topical</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr><td>Snap-8</td>
+        <td><span class="grp2">Cosmetic</span><span class="use">Expression-line softening — marketed as a topical "botox alternative"</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr data-c="gap"><td>NAD+ <em>(injectable)</em></td>
+        <td><span class="grp2">Non-peptide</span><span class="use">Energy, "anti-aging", cognition, addiction recovery</span><span class="vs"><b>Precursor evidence (NR/NMN) is not injectable-NAD+ evidence</b> — routinely merged, not the same claim</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr><td>5-Amino-1MQ</td>
+        <td><span class="grp2">Non-peptide</span><span class="use">Fat loss, metabolic rate — an NNMT inhibitor, taken orally or injected</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr><td>Lipo-C with B12</td>
+        <td><span class="grp2">Non-peptide</span><span class="use">"Fat-burning" injection — methionine, inositol, choline, B12</span></td>
+        <td><span class="chip pend">pending</span></td><td><span class="chip pend">—</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr data-c="blend"><td>KLOW Blend</td>
+        <td><span class="grp2">Blend</span><span class="use">Skin, hair, healing, inflammation — GHK-cu / BPC-157 / TB4 / KPV</span><span class="vs"><b>Never studied as a blend.</b> Combination effects untested</span></td>
+        <td><span class="chip L5">L5</span></td><td><span class="chip Mismatched">Mismatched</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr data-c="blend"><td>Glow Blend</td>
+        <td><span class="grp2">Blend</span><span class="use">Skin and aesthetic "glow" — GHK-cu / TB4 / BPC-157</span><span class="vs"><b>Never studied as a blend</b></span></td>
+        <td><span class="chip L5">L5</span></td><td><span class="chip Mismatched">Mismatched</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr data-c="blend"><td>Deadpool Blend</td>
+        <td><span class="grp2">Blend</span><span class="use">Injury recovery and joints — BPC-157 / TB4 / Cartalax</span><span class="vs"><b>Never studied as a blend</b></span></td>
+        <td><span class="chip L5">L5</span></td><td><span class="chip Mismatched">Mismatched</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr data-c="blend"><td>Beauty Blend</td>
+        <td><span class="grp2">Blend</span><span class="use">Skin and anti-inflammatory — GHK-cu / KPV</span><span class="vs"><b>Never studied as a blend</b></span></td>
+        <td><span class="chip L5">L5</span></td><td><span class="chip Mismatched">Mismatched</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr data-c="blend"><td>BPC-157 / TB4</td>
+        <td><span class="grp2">Blend</span><span class="use">The standard "injury stack" — 5/5 and 10/10 strengths</span><span class="vs"><b>The FAERS hyperpigmentation case involved this exact combination</b></span></td>
+        <td><span class="chip L5">L5</span></td><td><span class="chip Mismatched">Mismatched</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr data-c="blend"><td>Tesamorelin / Ipamorelin</td>
+        <td><span class="grp2">Blend</span><span class="use">Visceral fat loss plus GH pulse</span><span class="vs"><b>Never studied as a blend</b></span></td>
+        <td><span class="chip L5">L5</span></td><td><span class="chip Mismatched">Mismatched</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr data-c="blend"><td>CJC / Ipamorelin</td>
+        <td><span class="grp2">Blend</span><span class="use">The most common GH-axis stack — sleep, recovery, body composition</span><span class="vs"><b>Never studied as a blend</b></span></td>
+        <td><span class="chip L5">L5</span></td><td><span class="chip Mismatched">Mismatched</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+
+      <tr data-c="blend"><td>N-Acetyl Selank / Semax</td>
+        <td><span class="grp2">Blend</span><span class="use">Calm focus — anxiolytic plus nootropic</span><span class="vs"><b>Never studied as a blend</b>, and both components are analogues</span></td>
+        <td><span class="chip L5">L5</span></td><td><span class="chip Mismatched">Mismatched</span></td><td><span class="chip pend">—</span></td><td></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="count" id="cnt">Showing 45 of 45 rows · 4 fully graded · 9 blends at protocol default</p>
+  <div class="call w"><b class="hd">On the "sold for" column</b>
+    <p>These are <strong>market facts, not endorsements</strong> — what the compound is marketed and discussed for, recorded so the Indication Match axis has something to compare against. For BPC-157 the claims are quoted from clinic and pharmacy pages collected by FDA. For the rest they are currently characterisations of the market positioning and get <strong>verified against vendor pages during each compound's Phase 2 pass</strong> (step 6 of the search order, market facts only). Until then treat the column as provisional.</p></div>
+</section>
+
+<section id="inventory">
+  <h2><span class="num">04</span>Catalogue inventory</h2>
+  <p class="dek">Full pagination of the peptides, aminos and accessories categories, 8 Aug 2026. Prices are the vendor's displayed discounted price per 10-vial kit.</p>
+
+  <details><summary>Approved drugs sold as research chemicals<span class="tag">8 SKUs</span></summary><div class="dbody">
+    <table><thead><tr><th>Product</th><th>mg</th><th>Kit</th><th>Compound</th><th>Identity</th></tr></thead><tbody>
+      <tr><td>Tesamorelin</td><td>10</td><td>$288</td><td>Tesamorelin (Egrifta)</td><td>verified</td></tr>
+      <tr><td>PT 141</td><td>10</td><td>$168</td><td>Bremelanotide (Vyleesi — 1.75mg/dose)</td><td>verified</td></tr>
+      <tr><td>Melanotan I</td><td>10</td><td>$188</td><td>Afamelanotide (Scenesse — an implant)</td><td>verified</td></tr>
+      <tr><td>Thymosin Alpha 1</td><td>10</td><td>$288</td><td>Thymalfasin — approved ~35 countries, not US</td><td>verified</td></tr>
+      <tr><td>Sermorelin</td><td>5</td><td>$170</td><td>Sermorelin — US approval <strong>withdrawn 2008</strong></td><td>verified</td></tr>
+      <tr><td>VIP</td><td>10</td><td>$338</td><td>Aviptadil</td><td>verified</td></tr>
+      <tr><td>NXP-1P</td><td>5–?</td><td>$143–198</td><td>Semaglutide</td><td><strong>inferred</strong></td></tr>
+      <tr><td>NXP-2P</td><td>30/60</td><td>$168–488</td><td>Tirzepatide</td><td><strong>inferred</strong></td></tr>
+    </tbody></table>
+    <div class="call"><b class="hd">Coded SKUs</b><p>NXP-1P, -2P, -3P carry no compound name anywhere on the product page. Identity leaks through image upload filenames — <code>Sema-5mg</code>, <code>Tirz-30mg</code>, <code>Reta-12mg</code>. A filename is not a certificate of analysis, so these stay <strong>inferred</strong>. <strong>NXP-ATP</strong> has no identity signal of any kind and is recorded as <strong>unresolved</strong>.</p></div>
+  </div></details>
+
+  <details><summary>Investigational · repair · Khavinson · nootropic<span class="tag">19 SKUs</span></summary><div class="dbody">
+    <table><thead><tr><th>Product</th><th>mg</th><th>Kit</th><th>Compound</th><th>Note</th></tr></thead><tbody>
+      <tr><td>NXP-3P</td><td>12/24/48</td><td>$198–828</td><td>Retatrutide</td><td>inferred</td></tr>
+      <tr><td>Survodutide</td><td>10</td><td>$323</td><td>BI 456906</td><td>verified</td></tr>
+      <tr><td>Cagrilintide</td><td>5 / 10</td><td>$188 / $332</td><td>Cagrilintide</td><td>verified</td></tr>
+      <tr><td>ARA-290</td><td>10</td><td>$248</td><td>Cibinetide</td><td>verified</td></tr>
+      <tr><td>BPC 157</td><td>10</td><td>$152</td><td>BPC-157</td><td>PCAC-reviewed</td></tr>
+      <tr><td>TB4</td><td>10</td><td>$251</td><td>Thymosin β4, full-length</td><td><span class="flag">IDENTITY</span></td></tr>
+      <tr><td>TB500 Frag 17-23</td><td>10</td><td>$161</td><td>Tβ4 fragment 17–23</td><td><span class="flag">IDENTITY</span></td></tr>
+      <tr><td>PDA</td><td>10</td><td>$134</td><td>"Pentadeca-Arginate"</td><td><span class="flag">IDENTITY</span></td></tr>
+      <tr><td>KPV</td><td>10</td><td>$143</td><td>KPV tripeptide</td><td>PCAC-reviewed</td></tr>
+      <tr><td>LL-37</td><td>10</td><td>$378</td><td>Cathelicidin LL-37</td><td></td></tr>
+      <tr><td>Epitalon</td><td>10</td><td>$143</td><td>Epitalon (AEDG)</td><td>PCAC-reviewed</td></tr>
+      <tr><td>Cartalax</td><td>10</td><td>$161</td><td>Cartalax (AED)</td><td>inferred</td></tr>
+      <tr><td>Bronchogen</td><td>10</td><td>$158</td><td>Bronchogen tetrapeptide</td><td><span class="flag">IDENTITY</span></td></tr>
+      <tr><td>N-Acetyl Semax Amidate</td><td>10</td><td>$152</td><td>Not Semax</td><td><span class="flag">IDENTITY</span></td></tr>
+      <tr><td>N-Acetyl Selank Amidate</td><td>10</td><td>$152</td><td>Not Selank</td><td><span class="flag">IDENTITY</span></td></tr>
+      <tr><td>Adamax</td><td>10</td><td>$388</td><td>Unconfirmed</td><td><span class="flag">IDENTITY</span></td></tr>
+      <tr><td>DSIP</td><td>10</td><td>$178</td><td><strong>= emideltide</strong></td><td>PCAC-<strong>rejected</strong></td></tr>
+    </tbody></table>
+    <div class="call w"><b class="hd">Two unresolved identity questions</b>
+      <p><strong>TB4 vs TB-500.</strong> The vendor sells both as separate SKUs, implying TB4 is full-length thymosin β4. FDA reviewed "TB-500." If those differ, the FDA review does not cleanly attach to this SKU.</p>
+      <p><strong>Bronchogen sequence.</strong> AEDL (Ala-Glu-Asp-Leu) vs Ala-Asp-Glu-Leu (= ADEL). Different molecules, not two spellings of one. Flagged, not resolved by preference.</p></div>
+  </div></details>
+
+  <details><summary>GH-axis · melanocortin · cosmetic · non-peptide<span class="tag">12 SKUs</span></summary><div class="dbody">
+    <table><thead><tr><th>Product</th><th>Amount</th><th>Kit</th><th>Compound</th></tr></thead><tbody>
+      <tr><td>Ipamorelin</td><td>10mg</td><td>$178</td><td>Ipamorelin</td></tr>
+      <tr><td>CJC-1295 no dac</td><td>5mg</td><td>$170</td><td>Mod-GRF(1-29)</td></tr>
+      <tr><td>AOD-9604</td><td>2mg</td><td>$125</td><td>hGH fragment 176–191</td></tr>
+      <tr><td>Melanotan II</td><td>10mg</td><td>$188</td><td>Melanotan II — <strong>adverse-event literature</strong></td></tr>
+      <tr><td>GHK-cu lyophilized</td><td>50mg</td><td>$125–170</td><td>GHK-Cu</td></tr>
+      <tr><td>GHK-cu Cosmetic</td><td>5 × 1g</td><td>$116</td><td>GHK-Cu topical</td></tr>
+      <tr><td>AHK-cu Cosmetic</td><td>5 × 1g</td><td>$170</td><td>AHK-Cu topical</td></tr>
+      <tr><td>Snap-8</td><td>20mg</td><td>$198</td><td>Acetyl octapeptide-3</td></tr>
+      <tr><td>NAD+ Buffered</td><td>250 / 500mg</td><td>$168 / $228</td><td>A dinucleotide, not a peptide</td></tr>
+      <tr><td>5-Amino-1MQ</td><td>50mg</td><td>$198</td><td>NNMT inhibitor</td></tr>
+      <tr><td>Lipo-C with B12</td><td>10 × 10mL</td><td>$188</td><td>MIC + cyanocobalamin</td></tr>
+      <tr><td>NXP-ATP</td><td>30mg</td><td>$440</td><td><strong>Unresolved</strong></td></tr>
+    </tbody></table>
+  </div></details>
+
+  <details><summary>Blends — all L5 / Mismatched by default<span class="tag">9 SKUs</span></summary><div class="dbody">
+    <table><thead><tr><th>Product</th><th>Composition as stated</th><th>Kit</th></tr></thead><tbody>
+      <tr><td>KLOW Blend 80mg</td><td>GHK-cu 50 / BPC-157 10 / TB4 10 / KPV 10</td><td>$458</td></tr>
+      <tr><td>Glow Blend</td><td>GHK-cu 50 / TB4 10 / BPC-157 10</td><td>$358</td></tr>
+      <tr><td>Deadpool Blend</td><td>BPC-157 10 / TB4 10 / Cartalax 10</td><td>$398</td></tr>
+      <tr><td>Beauty Blend</td><td>GHK-cu 50 / KPV 20</td><td>$288</td></tr>
+      <tr><td>BPC-157 / TB4</td><td>5 / 5 · 10 / 10</td><td>$188 · $323</td></tr>
+      <tr><td>Tesamorelin / Ipamorelin</td><td>10 / 3</td><td>$328</td></tr>
+      <tr><td>CJC-no DAC / Ipamorelin</td><td>5 / 5</td><td>$198</td></tr>
+      <tr><td>N-Acetyl Selank / Semax</td><td>10 / 10</td><td>$238</td></tr>
+    </tbody></table>
+  </div></details>
+
+  <h3>Counts</h3>
+  <dl class="kv">
+    <dt>SKUs</dt><dd>51 enumerated</dd>
+    <dt>Records needed</dt><dd>34 compounds + 9 blends = 43</dd>
+    <dt>Identity</dt><dd>27 verified · 9 inferred · 1 unknown</dd>
+    <dt>Standing flags</dt><dd>7 carry ⚠ IDENTITY</dd>
+    <dt>PCAC coverage</dt><dd>7 compounds have an FDA evidence review</dd>
+  </dl>
+</section>
+
+<section id="docket">
+  <h2><span class="num">05</span>FDA PCAC docket — FDA-2025-N-6895</h2>
+  <p class="dek">Verified against primary sources. Agency-authored reviews of seven catalogue compounds, ~20 MB, free, written by reviewers with no commercial stake.</p>
+  <table>
+    <thead><tr><th style="width:44%">Claim checked</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Docket FDA-2025-N-6895 exists</td><td><strong>Confirmed</strong> — Federal Register 2026-07361</td></tr>
+      <tr><td>PCAC met 23–24 July 2026</td><td><strong>Confirmed</strong> — FDA meeting page, updated 6 Aug 2026</td></tr>
+      <tr><td>Covers all seven compounds</td><td><strong>Confirmed</strong> — briefing document introduction</td></tr>
+      <tr><td>Reviewers had no commercial stake</td><td><strong>Confirmed in structure</strong> — FDA proposed <strong>NOT</strong> to list all 14 substance forms</td></tr>
+    </tbody>
+  </table>
+  <div class="call"><b class="hd">Understated in the brief</b><p>FDA proposed rejection of <strong>every one</strong> of the seven — 14 substance forms, free base and acetate each. The committee then voted against the Agency's own reviewers on six of them.</p></div>
+
+  <h3>Briefing documents</h3>
+  <table>
+    <thead><tr><th>Compound</th><th>Size</th><th>Extracted</th></tr></thead>
+    <tbody>
+      <tr><td>Introduction</td><td>268 KB</td><td><span class="chip Direct">done</span></td></tr>
+      <tr><td><strong>BPC-157</strong></td><td>3.64 MB</td><td><span class="chip Direct">done</span></td></tr>
+      <tr><td>Emideltide</td><td>3.57 MB</td><td><span class="chip pend">pending</span></td></tr>
+      <tr><td>Epitalon</td><td>2.97 MB</td><td><span class="chip pend">pending</span></td></tr>
+      <tr><td>KPV</td><td>2.05 MB</td><td><span class="chip pend">pending</span></td></tr>
+      <tr><td>MOTS-c</td><td>2.23 MB</td><td><span class="chip pend">pending</span></td></tr>
+      <tr><td>Semax</td><td>2.94 MB</td><td><span class="chip pend">pending</span></td></tr>
+      <tr><td>TB-500</td><td>1.88 MB</td><td><span class="chip pend">pending</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="votes">
+  <h2><span class="num">06</span>Vote record — a provenance problem</h2>
+  <p class="dek">The most important epistemic caveat in the project so far.</p>
+  <div class="call b"><b class="hd">Excluded from synthesis by decision of 8 Aug 2026</b>
+    <p>FDA had not posted minutes or a transcript as of 6 Aug 2026, and the primary record is two YouTube webcasts that cannot be watched with available tools. Every tally below is <span class="lfs">⚠ learned-from-summary</span> and <strong>may not appear in any synthesis, table or summary until upgraded</strong>.</p>
+    <p>The figures came from the project brief rather than from a vendor. That does not change their status — same failure mode, no exception for trusted sources.</p></div>
+  <table>
+    <thead><tr><th>Vote</th><th>Figure supplied</th><th>Independent corroboration</th></tr></thead>
+    <tbody>
+      <tr><td>BPC-157</td><td>8–6 in favour</td><td>Yes — trade press</td></tr>
+      <tr><td>KPV</td><td>8–6 in favour</td><td>Yes — trade press</td></tr>
+      <tr><td>TB-500</td><td>8–6 in favour</td><td>Yes — trade press</td></tr>
+      <tr><td>MOTS-c</td><td>7–5 in favour</td><td>Yes — trade press</td></tr>
+      <tr><td>Emideltide</td><td>rejected 7–6</td><td>Direction only; <strong>tally uncorroborated</strong></td></tr>
+      <tr><td>Epitalon</td><td>7–4</td><td><strong>Not corroborated</strong></td></tr>
+      <tr><td>Semax</td><td>8–5</td><td><strong>Not corroborated</strong></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12.5px">A PCAC recommendation is non-binding and is not evidence of effectiveness — FDA's own reviewers recommended against listing every one.</p>
+</section>
+
+<section id="queue">
+  <h2><span class="num">07</span>Queue — 42 records pending</h2>
+  <p class="dek">Batching order confirmed 8 Aug 2026: the seven PCAC compounds first, since the FDA reviews are located and they calibrate the rubric before harder cases.</p>
+  <table>
+    <thead><tr><th>Block</th><th>Compounds</th><th>Blocked on</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1</strong> — done</td><td>BPC-157</td><td>—</td></tr>
+      <tr><td><strong>1b</strong> — done</td><td>PT-141, Tesamorelin, Ipamorelin — the approved-drug and GH-axis cluster, taken out of order</td><td>—</td></tr>
+      <tr><td><strong>2</strong> — next</td><td>KPV, TB-500/TB4, MOTS-c</td><td>Briefing PDFs; ClinicalTrials.gov access</td></tr>
+      <tr><td><strong>3</strong></td><td>DSIP/emideltide, Epitalon, Semax</td><td>Semax record must state it is not sold</td></tr>
+      <tr><td><strong>4</strong></td><td>Identity cluster — PDA, TB500 Frag, N-acetyl Semax/Selank, Adamax, NXP-ATP</td><td>Janoshik COA retrieval would resolve several</td></tr>
+      <tr><td><strong>5</strong></td><td>Approved drugs sold as research chemicals</td><td>—</td></tr>
+      <tr><td><strong>6</strong></td><td>GH-axis, melanocortin (MT-II gets its own safety section), cosmetic</td><td>—</td></tr>
+      <tr><td><strong>7</strong></td><td>Non-peptides, Khavinson trio, 9 blends</td><td>Bronchogen sequence conflict</td></tr>
+      <tr><td><strong>8</strong></td><td>Audit — separate session, records-only context</td><td>All records complete</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="method">
+  <h2><span class="num">08</span>Method &amp; rubric</h2>
+  <h3>Enforced search order</h3>
+  <p>Not reorderable. A previous pass wrote this order then searched conversationally instead, which returned vendor SEO content and contaminated the dataset.</p>
+  <ol>
+    <li>ClinicalTrials.gov</li>
+    <li>FDA PCAC 2026 docket extracts</li>
+    <li>PubMed, <strong>Species: Human filter ON</strong>, then RCT / systematic review / meta-analysis filters</li>
+    <li>PubMed, no species filter — only if 3 returns nothing</li>
+    <li>PMC / DOI full-text resolution</li>
+    <li>Vendor pages — <strong>last</strong>, market facts only, never for an evidence claim</li>
+  </ol>
+  <p><strong>Stopping rule.</strong> If 1–4 return no human study of any design, cap at L5, record the dated absence, move on.</p>
+
+  <h3>Evidence Level</h3>
+  <table><tbody>
+    <tr><td><span class="chip L1">L1</span></td><td>Systematic review of RCTs, or multiple large consistent RCTs</td></tr>
+    <tr><td><span class="chip L2">L2</span></td><td>≥1 adequately powered RCT with a <strong>prespecified</strong> primary endpoint</td></tr>
+    <tr><td><span class="chip L3">L3</span></td><td>Non-randomised controlled or cohort study</td></tr>
+    <tr><td><span class="chip L4">L4</span></td><td>Case series, case-control, uncontrolled observational, <strong>or conference abstract</strong></td></tr>
+    <tr><td><span class="chip L5">L5</span></td><td>In vitro, animal, or mechanistic reasoning only</td></tr>
+  </tbody></table>
+  <p><code>(provisional)</code> is appended where a grade rests on sponsor announcements rather than peer-reviewed publication.</p>
+
+  <h3>Provenance — two fields on every claim</h3>
+  <div class="prov">source: &lt;PMID / NCT / DOI / named document&gt;<br>retrieval: <span class="ret">retrieved</span> | abstract-only | <span class="lfs">⚠ learned-from-summary</span></div>
+  <p style="margin-top:11px"><span class="lfs">⚠ learned-from-summary</span> means the figure was encountered in someone else's description of a study that was not then opened. It may stay in the dataset; it may <strong>not</strong> be used in any synthesis until upgraded. This applies to figures supplied in the project brief itself.</p>
+
+  <h3>Working rules</h3>
+  <ul>
+    <li><strong>Absence is a finding.</strong> "No registered trials as of &lt;date&gt;" is a result.</li>
+    <li><strong>Never smooth over a discrepancy.</strong> Flag and move on rather than resolving by preference.</li>
+    <li><strong>Watch for narrative pull.</strong> Ironic findings get a <em>higher</em> evidentiary bar.</li>
+    <li><strong>No recommendations.</strong> If a sentence would work as marketing copy, rewrite it.</li>
+  </ul>
+</section>
+
+<section id="limits">
+  <h2><span class="num">09</span>Limitations</h2>
+  <p class="dek">What could not be reached, so the next pass knows where the soft spots are.</p>
+  <table>
+    <thead><tr><th>Issue</th><th>Effect</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Literature retrieval — SOLVED</strong></td><td>Direct PubMed page fetches hit a reCAPTCHA on the second consecutive request. <strong>NCBI E-utilities</strong> (<code>esearch.fcgi</code> / <code>efetch.fcgi</code>) returns clean abstracts with no rate-limiting and should be the default from now on. Five primary sources retrieved this way on 9 Aug 2026, clearing every outstanding efficacy figure in the Tesamorelin and Ipamorelin records</td><td><span class="chip Direct">resolved</span></td></tr>
+      <tr><td><strong>ClinicalTrials.gov unreachable</strong></td><td>Returns an <em>empty response body</em> on both the v2 API and the legacy <code>full_studies</code> endpoint; study pages are client-rendered. Step 1 of the search order still cannot be executed directly. <strong>Workaround:</strong> where a trial is published, the paper carries its own NCT identifier and is a better source than the registry entry — that path resolved NCT00672074 and NCT00123253. It does <em>not</em> substitute for a current search of unpublished or ongoing trials, which remains undone</td><td><strong>Open — partially mitigated</strong></td></tr>
+      <tr><td><strong>Corrections made 9 Aug 2026</strong></td><td>Three claims were wrong or over-stated and have been fixed in place, each with an inline note: <strong>(1)</strong> a safety statement attributed to Gobburu 1999 that the paper does not contain — struck; <strong>(2)</strong> tesamorelin glucose intolerance presented as an established liability when both pivotal trials found no significant glycaemic difference — now presents label warning and trial result together; <strong>(3)</strong> tesamorelin VAT "reverts toward baseline on withdrawal" — not supported by the retrieved abstract, withdrawn and reframed as an open question</td><td><span class="chip Direct">remediated</span></td></tr>
+      <tr><td>Ipamorelin Phase 2 characterisation</td><td>Originally described as having "failed." The published result is a <strong>7.3-hour median advantage at p=0.15 in 114 patients</strong> — underpowered rather than flatly negative. Reframed throughout</td><td><span class="chip Direct">remediated</span></td></tr>
+      <tr><td><strong>PCAC vote record is video-only</strong></td><td>Primary record is two YouTube webcasts; no minutes as of 6 Aug 2026</td><td>Open — tallies excluded</td></tr>
+      <tr><td>Large FDA PDFs exceed response limits</td><td>Each must be fetched to disk and read in chunks — slow for the remaining six</td><td>Managed</td></tr>
+    </tbody>
+  </table>
+  <h3>Structural gaps in the evidence base itself</h3>
+  <p>Findings about the field, not failures of this project.</p>
+  <ul>
+    <li><strong>No observational tier.</strong> For most of this catalogue there is nothing between rodent studies and marketing copy — no registries, no cohorts, no post-marketing surveillance, because there is no marketing authorisation to surveil.</li>
+    <li><strong>FAERS undercounts structurally.</strong> 503A compounders generally do not report to FDA; research-chemical vendors are outside the system entirely. Counts are floors of unknown tightness, never rates.</li>
+    <li><strong>Certificates of analysis report purity only.</strong> Impurity profiles, aggregation state and endotoxin are typically untested — "99% pure" constrains far less than it appears to.</li>
+  </ul>
+</section>
+
+<div class="foot">
+  <p>Each completed compound ships as a standalone HTML file in <code>compounds/</code> — self-contained, no shared dependencies, so it can be saved or shared on its own. Markdown working copies, FDA source extracts and the protocol are in <code>working/</code>.</p>
+  <p>Records are kept as separate files because Phase 4 requires auditing in a session holding only the records — same-session auditing shares the writer's blind spots.</p>
+  <p>Protocol v1.0, frozen 8 August 2026.</p>
+</div>
+
+</main>
+</div>
+
+<script>
+const links=[...document.querySelectorAll('#nav a')].filter(a=>a.getAttribute('href').startsWith('#'));
+const byHash={}; links.forEach(a=>byHash[a.getAttribute('href').slice(1)]=a);
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  links.forEach(l=>l.classList.remove('on'));
+  const a=byHash[e.target.id]; if(a)a.classList.add('on');}});},{rootMargin:'-15% 0px -75% 0px'});
+[...document.querySelectorAll('section, .mast')].forEach(s=>{if(s.id)io.observe(s)});
+
+const btns=[...document.querySelectorAll('.fb')], rows=[...document.querySelectorAll('#gt tbody tr')];
+btns.forEach(b=>b.onclick=()=>{
+  btns.forEach(x=>x.classList.remove('on')); b.classList.add('on');
+  const f=b.dataset.f; let n=0;
+  rows.forEach(r=>{const s=f==='all'||(r.dataset.c||'').includes(f); r.style.display=s?'':'none'; if(s)n++;});
+  document.getElementById('cnt').textContent='Showing '+n+' of '+rows.length+' rows';
+});
+
+document.querySelectorAll('table.sortable').forEach(t=>{
+  t.querySelectorAll('th').forEach((th,i)=>{th.onclick=()=>{
+    const asc=!th.classList.contains('asc');
+    t.querySelectorAll('th').forEach(h=>h.classList.remove('asc','desc'));
+    th.classList.add(asc?'asc':'desc');
+    const tb=t.tBodies[0];
+    [...tb.rows].sort((a,b)=>{const x=a.cells[i].innerText.trim().toLowerCase(),y=b.cells[i].innerText.trim().toLowerCase();
+      return asc?x.localeCompare(y):y.localeCompare(x);}).forEach(r=>tb.appendChild(r));
+  };});
+});
+</script>
+</body>
+</html>
