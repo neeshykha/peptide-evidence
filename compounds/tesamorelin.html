@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tesamorelin — Evidence Record</title>
+<style>
+:root{
+  --bg:#faf9f7; --panel:#fff; --ink:#1a1a1a; --ink-2:#4a4a48; --ink-3:#78766f;
+  --line:#e3e0da; --line-2:#efece7;
+  --accent:#7a3b2e; --accent-soft:#f3ebe8;
+  --warn:#9a6a12; --warn-soft:#fdf4e3;
+  --bad:#8c2f2f; --bad-soft:#faecec;
+  --ok:#2f5f45; --ok-soft:#e9f2ec;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#16150f; --panel:#1e1d17; --ink:#eceae4; --ink-2:#bdbab2; --ink-3:#8d8a82;
+  --line:#332f26; --line-2:#282419; --accent:#d9856f; --accent-soft:#2a1e19;
+  --warn:#dfae5c; --warn-soft:#2b2213; --bad:#e08585; --bad-soft:#2d1a1a;
+  --ok:#7fbb98; --ok-soft:#16241c;}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+main{max-width:830px;margin:0 auto;padding:30px 26px 100px}
+h2{font-size:19px;margin:34px 0 8px;letter-spacing:-.015em;font-weight:660;padding-bottom:6px;border-bottom:1px solid var(--line)}
+h4{font-size:13px;margin:18px 0 6px;font-weight:680;color:var(--ink-2);text-transform:uppercase;letter-spacing:.05em}
+p{margin:0 0 12px;color:var(--ink-2)}
+strong{color:var(--ink);font-weight:640}
+ul,ol{margin:0 0 13px;padding-left:20px;color:var(--ink-2)} li{margin-bottom:5px}
+code{font-family:var(--mono);font-size:12px;background:var(--line-2);padding:1.5px 5px;border-radius:3px;color:var(--ink)}
+a{color:var(--accent)}
+table{width:100%;border-collapse:collapse;font-size:12.8px;margin:12px 0 16px}
+th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);padding:7px 9px;border-bottom:1.5px solid var(--line);font-weight:680;vertical-align:bottom}
+td{padding:8px 9px;border-bottom:1px solid var(--line-2);vertical-align:top;color:var(--ink-2)}
+tr:last-child td{border-bottom:none} td strong{color:var(--ink)}
+blockquote{margin:13px 0;padding:10px 16px;border-left:2px solid var(--line);font-family:var(--serif);font-size:14px;color:var(--ink-2);font-style:italic}
+.back{font-size:12px;color:var(--ink-3);text-decoration:none;display:inline-block;margin-bottom:16px}
+.back:hover{color:var(--accent)}
+.mast{border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:22px 24px;margin-bottom:8px}
+.mast h1{font-size:31px;margin:0 0 4px;letter-spacing:-.03em;font-weight:690}
+.mast .sold{font-size:13px;color:var(--ink-2);margin-bottom:3px}
+.mast .meta{font-size:11px;color:var(--ink-3);font-family:var(--mono)}
+.axes{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:18px 0 0}
+.ax{padding:11px 13px;border-radius:7px;border:1px solid var(--line);background:var(--bg)}
+.ax b{display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);margin-bottom:5px;font-weight:680}
+.chip{display:inline-block;font-size:11px;font-weight:680;padding:2.5px 8px;border-radius:4px;font-family:var(--mono)}
+.L1,.L2{background:var(--ok-soft);color:var(--ok)} .L4{background:var(--warn-soft);color:var(--warn)} .L5{background:var(--bad-soft);color:var(--bad)}
+.Mismatched{background:var(--bad-soft);color:var(--bad)} .Concentrated{background:var(--warn-soft);color:var(--warn)}
+.ax .note{display:block;font-size:11px;color:var(--ink-3);margin-top:4px;line-height:1.35}
+.flag{display:inline-block;font-size:10px;font-family:var(--mono);font-weight:680;padding:2px 6px;border-radius:4px;background:var(--bad-soft);color:var(--bad);margin-right:4px}
+.flag.sel{background:var(--warn-soft);color:var(--warn)}
+.call{border-left:3px solid var(--accent);background:var(--accent-soft);padding:13px 16px;border-radius:0 7px 7px 0;margin:16px 0;font-size:13.5px}
+.call.w{border-left-color:var(--warn);background:var(--warn-soft)}
+.call.b{border-left-color:var(--bad);background:var(--bad-soft)}
+.call.g{border-left-color:var(--ok);background:var(--ok-soft)}
+.call b.hd{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px;color:var(--accent);font-weight:700}
+.call.w b.hd{color:var(--warn)} .call.b b.hd{color:var(--bad)} .call.g b.hd{color:var(--ok)}
+.call p:last-child{margin-bottom:0}
+.prov{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin:9px 0 0;padding:7px 10px;background:var(--line-2);border-radius:5px;line-height:1.55}
+.lfs{color:var(--warn);font-weight:680} .ret{color:var(--ok);font-weight:680}
+.chain{list-style:none;padding:0;margin:12px 0;counter-reset:s}
+.chain li{counter-increment:s;position:relative;padding:8px 0 8px 38px;border-bottom:1px solid var(--line-2);font-size:13.3px}
+.chain li:last-child{border-bottom:none}
+.chain li::before{content:counter(s);position:absolute;left:0;top:8px;width:22px;height:22px;border-radius:50%;background:var(--line-2);color:var(--ink-3);font-size:10.5px;font-weight:680;display:flex;align-items:center;justify-content:center;font-family:var(--mono)}
+.chain li.hum::before{background:var(--ok-soft);color:var(--ok)}
+.chain li.ani::before{background:var(--warn-soft);color:var(--warn)}
+.chain li.no::before{background:var(--bad-soft);color:var(--bad)}
+.st{display:block;font-size:10.5px;font-weight:680;text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+.st.hum{color:var(--ok)} .st.ani{color:var(--warn)} .st.no{color:var(--bad)}
+.foot{border-top:1px solid var(--line);padding-top:15px;font-size:11px;color:var(--ink-3);margin-top:40px}
+@media(max-width:640px){.axes{grid-template-columns:1fr}main{padding:20px 16px 60px}}
+@media print{body{background:#fff}.back{display:none}}
+</style>
+</head>
+<body>
+<main>
+
+<a class="back" href="../peptide-evidence-brief.html">← Peptide Evidence Brief</a>
+
+<div class="mast">
+  <h1>Tesamorelin</h1>
+  <div class="sold"><strong>Sold as</strong> "Tesamorelin 10mg (10 vials/Kit)", $288/kit — lyophilised, route not stated, labelled research use only. Also sold as a blend with ipamorelin (10mg/3mg, $328/kit).</div>
+  <div class="meta">Record 2026-08-09 · Protocol v1.0 · Approved drug sold as a research chemical</div>
+  <div class="axes">
+    <div class="ax"><b>Evidence Level</b><span class="chip L1">L1</span>
+      <span class="note">Two Phase 3 RCTs plus a pooled analysis with safety extension — for HIV-associated lipodystrophy</span></div>
+    <div class="ax"><b>Indication Match</b><span class="chip Mismatched">Mismatched</span>
+      <span class="note">Population, not dose, is the gap. The label disclaims the marketed use in writing</span></div>
+    <div class="ax"><b>Source Independence</b><span class="chip Concentrated">Concentrated</span>
+      <span class="note">Single sponsor programme, Theratechnologies</span></div>
+  </div>
+  <div style="margin-top:12px"><span class="flag">ROUTE/DOSE</span><span class="flag sel">SELECTION</span></div>
+</div>
+
+<div class="call">
+  <b class="hd">Bottom line</b>
+  <p>Tesamorelin does what it says on its label, and its label says something narrower than the market does. Two Phase 3 trials in <strong>HIV-infected adults with antiretroviral-associated lipodystrophy</strong> showed a real, selective, reproducible reduction in visceral fat — roughly 15% versus placebo — without touching subcutaneous fat. That is a good drug for a specific problem. It is sold here for general visceral fat loss, body recomposition and anti-aging in people who do not have HIV lipodystrophy, and for that population there is no trial evidence at all. The FDA label goes further than absence: it states in the Limitations of Use section that the drug is <strong>"not indicated for weight loss management."</strong> The Indication Match axis is doing the work, and unusually the mismatch is documented by the manufacturer's own labelling rather than inferred.</p>
+</div>
+
+<h2>What it is</h2>
+<p>A synthetic analogue of growth hormone-releasing factor (GHRF/GHRH) — a stabilised GHRH(1–44) with a trans-3-hexenoyl modification that resists enzymatic degradation. It acts on the pituitary to increase endogenous pulsatile GH secretion, which in turn raises IGF-1. It is <strong>not</strong> exogenous growth hormone; it works upstream of it, which preserves physiological pulsatility and feedback.</p>
+<p><strong>Regulatory status:</strong> approved by FDA in <strong>2010</strong> as <strong>Egrifta</strong>, later reformulated as <strong>Egrifta SV</strong>. Indicated "for the reduction of excess abdominal fat in HIV-infected adult patients with lipodystrophy."</p>
+<p>The label carries three explicit Limitations of Use:</p>
+<blockquote>"Long-term cardiovascular safety of EGRIFTA SV has not been established."<br>"Not indicated for weight loss management."<br>"There are no data to support improved compliance with anti-retroviral therapies in HIV-positive patients taking EGRIFTA SV."</blockquote>
+<p>Dosing under the SV formulation is <strong>1.4 mg subcutaneously once daily</strong> (0.35 mL of solution reconstituted from a 2 mg vial), injected into the abdomen with site rotation.</p>
+<div class="prov">source: EGRIFTA SV prescribing information, FDA label 022505s012s013, revised 07/2019 · retrieval: <span class="ret">retrieved</span> — HIGHLIGHTS section read in full (indication, limitations, dosage, contraindications, warnings, adverse reactions); the remainder of the 1,677-line label was not read</div>
+
+<h2>Theoretical pathway</h2>
+<ol class="chain">
+  <li class="hum">Binds pituitary GHRH receptors and increases endogenous pulsatile GH secretion<span class="st hum">demonstrated in humans</span></li>
+  <li class="hum">GH rises, driving an increase in circulating IGF-1<span class="st hum">demonstrated in humans — the label requires IGF-1 monitoring because of it</span></li>
+  <li class="hum">GH promotes lipolysis preferentially in visceral adipose tissue<span class="st hum">demonstrated in humans by CT-measured VAT reduction</span></li>
+  <li class="hum">Visceral fat falls without loss of subcutaneous fat<span class="st hum">demonstrated — SAT change was not significant, P=0.08</span></li>
+  <li class="hum">Cardiometabolic markers improve alongside<span class="st hum">demonstrated — triglycerides −12.3%, cholesterol/HDL ratio −7.2%</span></li>
+  <li class="no">The same effect occurs in people whose visceral adiposity is not ART-associated lipodystrophy<span class="st no">never tested in an adequately powered trial</span></li>
+  <li class="no">The effect persists after stopping<span class="st no">the trial was designed to test this — the retrieved report does not give the answer</span></li>
+  <li class="no">Long-term cardiovascular outcomes improve<span class="st no">explicitly not established, per the label</span></li>
+</ol>
+
+<div class="call b">
+  <b class="hd">⚠ Where the chain breaks — steps 6 and 7, and neither break is about exposure</b>
+  <p>This compound is the opposite of the usual failure mode in this dataset. Steps 1 through 5 are demonstrated <em>in humans</em>, with CT imaging, in randomised placebo-controlled trials. Nothing about delivery, half-life or target engagement is in doubt.</p>
+  <p><strong>The first break is population.</strong> HIV-associated lipodystrophy is not ordinary abdominal obesity. It is a specific iatrogenic syndrome — altered fat distribution driven by antiretroviral therapy and chronic HIV infection, with a disproportionate visceral compartment and often <em>reduced</em> subcutaneous fat. A drug that shifts visceral fat selectively is well matched to that pathophysiology. Whether it does the same thing in a metabolically healthy adult with garden-variety central adiposity is an open empirical question that has never been answered by an adequately powered trial. Plausible is not demonstrated.</p>
+  <p><strong>The second break is durability — and the honest statement is narrower than it first appears.</strong> The pooled trial re-randomised 135 patients from tesamorelin to placebo at week 26 specifically to test what happens on withdrawal. The published abstract reports that reductions were <em>maintained</em> in the group that stayed on drug (T-T, n=246) and <strong>does not report the withdrawal group's outcome</strong>. So the design asked the durability question; the retrieved source does not supply the answer.</p>
+  <p>What can be said without over-reaching: there is no published evidence in what has been retrieved that the effect persists after stopping, and the drug is labelled for continuous daily use. Whether visceral fat rebounds, plateaus or holds is an open question — which itself makes the label's unestablished long-term cardiovascular safety a live issue, since the implied treatment duration is indefinite.</p>
+  <div class="prov">An earlier version of this record asserted that VAT "reverts toward baseline on withdrawal." That claim is not supported by the retrieved abstract and has been withdrawn. Upgrading it requires the full text of Falutz 2010 or the 2008 extension paper.</div>
+</div>
+
+<h2>Claimed vs. supported indications</h2>
+<table>
+  <thead><tr><th>Ailment</th><th>Marketed claim</th><th>Evidence that exists</th><th>Level</th><th>Natural history untreated</th><th>Nearest approved option</th></tr></thead>
+  <tbody>
+    <tr><td><strong>HIV-associated lipodystrophy</strong></td><td>The approved use; rarely how the research-chemical market frames it</td><td>Two Phase 3 RCTs + pooled analysis. Falutz 2007: n=412, 26 wk, VAT <strong>−15.2% vs +5.0%</strong> placebo, P&lt;0.001. Pooled (n=806): VAT −24±41 vs +2±35 cm², treatment effect <strong>−15.4%</strong>, P&lt;0.001; maintained to 52 wk on continued treatment</td><td><span class="chip L1">L1</span></td><td>Progressive and does not spontaneously resolve. Driven by ongoing ART exposure; associated with metabolic and cardiovascular risk</td><td><strong>Tesamorelin is the only approved option.</strong> Otherwise ART regimen modification, diet and exercise</td></tr>
+    <tr><td><strong>General visceral fat loss</strong></td><td>The dominant market use — "the only FDA-approved belly-fat peptide"</td><td><strong>No adequately powered RCT in people without HIV lipodystrophy.</strong> The label states the drug is "not indicated for weight loss management"</td><td><span class="chip L5">L5</span></td><td>Visceral fat responds substantially to caloric deficit, exercise and sleep correction, and falls with any meaningful weight loss</td><td>GLP-1 receptor agonists, which have large outcome trials; structured diet and exercise; bariatric surgery at the severe end</td></tr>
+    <tr><td>Body recomposition / lean mass</td><td>Sold in a blend with ipamorelin explicitly for this</td><td><strong>None.</strong> Trials measured fat compartments, not athletic body composition, and enrolled a clinical population</td><td><span class="chip L5">L5</span></td><td>Body composition responds strongly to training and protein intake; attribution to any added agent is difficult without a controlled comparison</td><td>Resistance training and adequate protein. No approved pharmacotherapy for this purpose in healthy adults</td></tr>
+    <tr><td>Anti-aging / GH restoration</td><td>Positioned as restoring youthful GH signalling</td><td><strong>None.</strong> No trial has tested aging-related endpoints. IGF-1 elevation is a measured pharmacodynamic effect, not a clinical outcome</td><td><span class="chip L5">L5</span></td><td>GH declines with age in everyone; whether that decline is a cause of aging or an adaptation is unsettled</td><td>None. Recombinant GH is approved only for diagnosed GH deficiency, and its use for aging is specifically discouraged</td></tr>
+    <tr><td>Liver fat / MASLD</td><td>Increasingly claimed</td><td>Studied in HIV-positive populations with encouraging results; <strong>not</strong> established in the general MASLD population</td><td><span class="chip L4">L4</span> for the population sold to</td><td>Progressive in a minority; improves substantially with weight loss</td><td>Resmetirom for MASH with fibrosis; GLP-1s; weight loss</td></tr>
+  </tbody>
+</table>
+
+<h2>Expected utility — reasoned, not scored</h2>
+<p>Two very different priors, and conflating them is the error this record exists to prevent.</p>
+<p><strong>For an HIV-positive adult with ART-associated lipodystrophy, on the approved product at the approved dose:</strong> a well-supported expectation of roughly 15% visceral fat reduction over six months, sustained while treatment continues, with modest triglyceride and lipid-ratio improvements and no loss of subcutaneous fat. This is one of the few places in this entire dataset where the evidence supports a confident expectation of a real effect. It is also a genuinely difficult clinical problem with no other approved option.</p>
+<p><strong>For a healthy adult buying a research vial to reduce belly fat:</strong> the evidence base does not extend here, and the manufacturer's own label says so. Even granting that the mechanism might operate similarly, three things cut against a strong expectation. The drug is weight-neutral by design — the scale will not move, which is not what most buyers expect. The effect reverses on discontinuation, so it is an indefinite commitment rather than an intervention. And the comparator is not nothing: GLP-1 receptor agonists produce far larger reductions in total and visceral adiposity with outcome data behind them, and are also available. A drug with a 15% visceral effect in a different population is a weak proposition next to that.</p>
+<div class="call w"><b class="hd">Dominant uncertainty</b>
+  <p><strong>Whether ART-associated lipodystrophy and ordinary central adiposity are the same target.</strong> Everything else about this compound is well characterised — the pharmacology, the imaging endpoint, the safety profile, the dose. The single unresolved question is whether a syndrome of iatrogenic fat redistribution responds to GHRH analogue therapy the way ordinary visceral obesity would. Nobody has run that trial, and until someone does, the transfer is an assumption.</p></div>
+
+<h2>Registry record</h2>
+<ul>
+  <li><code>NCT00123253</code> — TH9507 in patients with HIV-associated lipodystrophy. Phase 3.</li>
+  <li><code>NCT00608023</code> — TH9507 extension study in patients with HIV-associated lipodystrophy. Provides the 52-week and withdrawal data.</li>
+</ul>
+<p>Sponsor: Theratechnologies. Trials completed, published in <em>NEJM</em> and <em>JCEM</em>, and the programme carried through to FDA approval in 2010 — a complete development record.</p>
+<div class="call w"><b class="hd">⚠ Independent registry check incomplete</b><p><code>NCT00123253</code> is now <span class="ret">retrieved</span> — it appears in the Falutz 2007 paper's own registration statement, which is a primary source for the identifier. ClinicalTrials.gov itself remains unreachable (empty response body on both v2 and legacy endpoints; study pages are client-rendered), so <strong>no current search for trials in non-HIV populations has been performed</strong> — precisely the search that would matter most for this record. Logged in Limitations.</p></div>
+
+<h2>Human evidence</h2>
+<table>
+  <thead><tr><th>Citation</th><th>Design</th><th>n</th><th>Route &amp; dose</th><th>Retrieval</th></tr></thead>
+  <tbody>
+    <tr><td>Falutz J et al. <em>N Engl J Med</em> 2007;357(23):2359–70<br>PMID 18057338 · DOI 10.1056/NEJMoa072375 · NCT00123253</td><td>Phase 3 RCT, double-blind, placebo-controlled, 26 wk</td><td><strong>412</strong> (86% men)</td><td>2 mg SC daily</td><td><span class="ret">retrieved</span></td></tr>
+    <tr><td>Falutz J et al. <em>J Clin Endocrinol Metab</em> 2010;95(9):4291–304<br>PMID 20554713 · DOI 10.1210/jc.2010-0490</td><td>Pooled analysis of two Phase 3 trials; 26-wk randomised phase + 26-wk safety extension with re-randomisation</td><td><strong>806</strong> (543 tesamorelin / 263 placebo)<br>Extension: T-T 246 · T-P 135 · P-T 197</td><td>2 mg SC daily</td><td><span class="ret">retrieved</span></td></tr>
+    <tr><td>EGRIFTA SV label 022505s012s013</td><td>Regulatory document</td><td>—</td><td>1.4 mg SC daily</td><td><span class="ret">retrieved</span> (HIGHLIGHTS only)</td></tr>
+  </tbody>
+</table>
+<h4>Falutz 2007 — the pivotal trial, week 26</h4>
+<table>
+  <thead><tr><th>Endpoint</th><th>Tesamorelin</th><th>Placebo</th><th>P</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Visceral adipose tissue</strong> (primary, CT)</td><td><strong>−15.2%</strong></td><td><strong>+5.0%</strong></td><td>&lt;0.001</td></tr>
+    <tr><td>Triglycerides</td><td>−50 mg/dL</td><td>+9 mg/dL</td><td>&lt;0.001</td></tr>
+    <tr><td>Total cholesterol / HDL ratio</td><td>−0.31</td><td>+0.21</td><td>&lt;0.001</td></tr>
+    <tr><td>IGF-I</td><td><strong>+81.0%</strong></td><td>−5.0%</td><td>&lt;0.001</td></tr>
+    <tr><td>Glycaemic measures</td><td colspan="2">No significant differences</td><td>ns</td></tr>
+    <tr><td>Adverse events</td><td colspan="3">Did not differ significantly between groups, but <strong>more patients on tesamorelin withdrew because of an adverse event</strong></td></tr>
+  </tbody>
+</table>
+<h4>Pooled Phase 3 results at week 26</h4>
+<table>
+  <thead><tr><th>Endpoint</th><th>Tesamorelin vs placebo</th><th>Treatment effect</th><th>P</th></tr></thead>
+  <tbody>
+    <tr><td>Visceral adipose tissue</td><td>−24 ± 41 vs +2 ± 35 cm²</td><td><strong>−15.4%</strong></td><td>&lt;0.001</td></tr>
+    <tr><td>Abdominal subcutaneous adipose tissue</td><td>−2 ± 32 vs +2 ± 29 cm²</td><td>−0.6%</td><td>0.08 — <strong>not significant</strong></td></tr>
+    <tr><td>Triglycerides</td><td>−37 ± 139 vs +6 ± 112 mg/dL</td><td>−12.3%</td><td>&lt;0.001</td></tr>
+    <tr><td>Cholesterol / HDL ratio</td><td>−0.18 ± 1.00 vs +0.18 ± 0.94</td><td>−7.2%</td><td>&lt;0.001</td></tr>
+    <tr><td><strong>IGF-I</strong></td><td>+108 ± 112 vs −7 ± 64 ng/mL</td><td>—</td><td>&lt;0.001</td></tr>
+    <tr><td>Belly appearance distress</td><td colspan="2">Improved</td><td>0.002</td></tr>
+    <tr><td>Patient rating of belly profile</td><td colspan="2">Improved</td><td>0.003</td></tr>
+    <tr><td>Physician rating of belly profile</td><td colspan="2">Improved</td><td>&lt;0.001</td></tr>
+    <tr><td><strong>Glucose parameters, wk 26 and 52</strong></td><td colspan="3"><strong>No clinically meaningful differences between groups</strong></td></tr>
+  </tbody>
+</table>
+<p>The non-significant subcutaneous result is not a failure — it is the point. Selectivity for the visceral compartment is what made this drug approvable for a syndrome in which subcutaneous fat is often already depleted.</p>
+<h4>Week 52, continued-treatment group (T-T, n=246)</h4>
+<p>Reductions were <strong>maintained</strong>, all P&lt;0.001 versus original baseline: VAT <strong>−35 ± 50 cm² (−17.5 ± 23.3%)</strong>, waist circumference −3.4 ± 6.0 cm, triglycerides −48 ± 182 mg/dL, total cholesterol −8 ± 38 mg/dL, non-HDL cholesterol −7 ± 38 mg/dL.</p>
+<div class="call g"><b class="hd">All efficacy figures upgraded to <span class="ret">retrieved</span>, 9 Aug 2026</b>
+  <p>Both Falutz papers were retrieved in full via NCBI E-utilities after direct PubMed fetches were rate-limited. Every number in the two tables above now comes from the published abstracts rather than from descriptions of them, and may be used in synthesis.</p></div>
+
+<h2>Preclinical basis</h2>
+<p>Deliberately brief and not load-bearing. Tesamorelin has Phase 3 human data on an imaging endpoint in the approved population; the preclinical GHRH-analogue work adds nothing the human trials do not establish better. Where a compound has adequate human evidence, preclinical rationale stops being evidence and becomes background.</p>
+
+<h2>Safety signal</h2>
+<p>Kept separate from efficacy. All of the following is <span class="ret">retrieved</span> from the FDA label.</p>
+<h4>Contraindications</h4>
+<ul>
+  <li>Disruption of the hypothalamic-pituitary axis</li>
+  <li><strong>Active malignancy</strong></li>
+  <li>Known hypersensitivity to tesamorelin or excipients</li>
+  <li><strong>Pregnancy</strong></li>
+</ul>
+<h4>Warnings and precautions</h4>
+<ul>
+  <li><strong>Increased risk of neoplasms.</strong> Preexisting malignancy should be inactive and its treatment complete before starting; discontinue on any evidence of recurrence.</li>
+  <li><strong>Elevated IGF-1.</strong> The label states plainly: <em>"The effects of prolonged elevations in IGF-1 levels are unknown."</em> Monitoring is required, with discontinuation considered for persistent elevation.</li>
+  <li><strong>Fluid retention</strong> — oedema, arthralgia, carpal tunnel syndrome.</li>
+  <li><strong>Glucose intolerance or diabetes mellitus</strong> may develop. Glucose evaluation required before and during therapy. <em>But note the trial data below — this is a labelled precaution that the pivotal trials did not bear out.</em></li>
+  <li>Hypersensitivity reactions occurred in clinical trials.</li>
+  <li>Injection site reactions.</li>
+  <li><strong>Increased mortality in patients with acute critical illness.</strong></li>
+</ul>
+<h4>Most common adverse reactions (&gt;5%)</h4>
+<p>Arthralgia, injection site erythema, injection site pruritus, pain in extremity, peripheral oedema, myalgia.</p>
+<div class="call g"><b class="hd">Correction — the glucose signal did not appear in the trials</b>
+  <p>An earlier version of this record treated glucose intolerance as an established liability and called it "directly counterproductive for someone taking it for metabolic reasons." That over-read the label.</p>
+  <p>Both retrieved trial reports say the opposite. Falutz 2007: <em>"No significant differences were observed in glycemic measures."</em> Falutz 2010: <em>"No clinically meaningful differences were observed between groups in glucose parameters at wk 26 and 52."</em></p>
+  <p>Both things are true and both belong in the record. Glucose intolerance is a <strong>labelled warning</strong> with monitoring required — a real regulatory precaution grounded in GH-axis class effects. It is <strong>not</strong> a demonstrated finding in this drug's own pivotal trials out to 52 weeks. Presenting only the label would have overstated the risk; presenting only the trials would understate it.</p></div>
+<div class="call b"><b class="hd">What the safety monitoring implies for unsupervised use</b>
+  <p>This drug's label requires <strong>IGF-1 monitoring</strong> and <strong>glucose evaluation before and during therapy</strong>, contraindicates it in active malignancy and pregnancy, and warns about neoplasm risk. Those requirements exist because the drug raises a growth factor whose long-term elevation the label describes as having unknown effects.</p>
+  <p>Every one of those safeguards presumes a prescriber, a diagnosis and laboratory follow-up. None of them attach to a vial bought as a research chemical. This is not a claim that harm is likely — it is the observation that the drug's own safety framework is built around monitoring that the research-chemical channel structurally cannot provide.</p></div>
+
+<h2>Unfavourable and counterbalancing findings</h2>
+<ul>
+  <li><strong>The label explicitly disclaims the marketed use:</strong> "Not indicated for weight loss management."</li>
+  <li><strong>Long-term cardiovascular safety is explicitly not established</strong> — stated in the label's Limitations of Use, for a drug intended for indefinite use.</li>
+  <li><strong>Durability after stopping is unestablished.</strong> The trial re-randomised 135 patients to placebo to test exactly this; the published abstract reports maintenance only in the continued-treatment arm and does not give the withdrawal result. The drug is labelled for continuous daily use.</li>
+  <li><strong>It is weight-neutral.</strong> Buyers expecting scale weight loss are expecting something the manufacturer states the drug does not do.</li>
+  <li><strong>Large IGF-I elevation of unknown long-term consequence</strong> — +81.0% in the pivotal trial, +108 ng/mL in the pooled analysis — in a drug carrying a neoplasm warning and a monitoring requirement.</li>
+  <li><strong>More patients on tesamorelin withdrew because of an adverse event</strong>, even though overall adverse event rates did not differ significantly (Falutz 2007).</li>
+  <li><strong>Single-sponsor evidence base.</strong> All pivotal data come from the Theratechnologies programme.</li>
+  <li>Commercially the product has been repeatedly reformulated and repriced, and access has been a persistent issue for the patients it was approved for.</li>
+</ul>
+<div class="call g"><b class="hd">Credit where due</b>
+  <p>This is a real drug with a real, replicated, imaging-confirmed effect, developed properly and approved on the strength of it. Two Phase 3 trials with a pooled analysis and a safety extension. A CT-measured objective primary endpoint rather than a questionnaire. Demonstrated <em>selectivity</em> — visceral down, subcutaneous unchanged — which is a harder and more interesting result than simple fat loss, and exactly what the target population needed. Coherent secondary lipid improvements. And it remains the only approved treatment for a condition that had none.</p>
+  <p>The criticism in this record is not of the drug or its evidence. It is entirely about the distance between the population studied and the population buying it.</p></div>
+
+<h2>Flags</h2>
+<h4><span class="flag">ROUTE/DOSE</span></h4>
+<table>
+  <thead><tr><th>Gap</th><th>Magnitude</th></tr></thead>
+  <tbody>
+    <tr><td>Dose per vial vs labelled dose</td><td>Labelled dose <strong>1.4 mg/day</strong> (Egrifta SV). Vial contains <strong>10 mg</strong> — about <strong>7 daily doses per vial</strong>, ~71 days per 10-vial kit. <em>The dose gap here is small</em>, which distinguishes this record from most in the dataset.</td></tr>
+    <tr><td>Formulation — the real gap</td><td>The label is explicit that the 1 mg/vial and 2 mg/vial formulations "have differences in the dosage, the number of vials required to prepare a dose, reconstitution instructions, and storage requirements," and gives dosing instructions valid <em>only</em> for the 2 mg presentation. A 10 mg research vial is neither approved presentation. Reconstitution volume, concentration and delivered dose are all user-determined.</td></tr>
+    <tr><td>Population — the decisive gap</td><td>Studied exclusively in HIV-infected adults with ART-associated lipodystrophy. Sold without reference to HIV status, diagnosis or lipodystrophy.</td></tr>
+    <tr><td>Monitoring</td><td>Label requires IGF-1 and glucose monitoring. Not available through this channel.</td></tr>
+  </tbody>
+</table>
+<h4><span class="flag sel">SELECTION</span></h4>
+<p>All pivotal evidence originates from a single sponsor's development programme, with the same lead investigator across the principal publications. Normal for drug development and recorded rather than alleged — but it means there is no independent replication of the visceral-fat effect, and no group with an incentive to test whether it generalises beyond the licensed population.</p>
+<h4>No IDENTITY flag</h4>
+<p>Tesamorelin has an INN, an approved product and a defined structure, and the vendor names it directly. Identity is not in question — though purity, fill accuracy and endotoxin control of the research vial are unverified, as with everything in this catalogue.</p>
+
+<h2>What a positive trial would need to show</h2>
+<p>The approved indication is settled. The marketed use needs one trial that has never been run.</p>
+<p><strong>Design:</strong> randomised, double-blind, placebo-controlled, parallel-group. <strong>Population:</strong> HIV-negative adults with CT- or MRI-confirmed elevated visceral adipose tissue, no lipodystrophy, stable weight, not on GLP-1 therapy. <strong>Intervention:</strong> tesamorelin 1.4 mg SC daily vs placebo, both arms on standardised dietary and activity guidance so the comparison is against real standard of care. <strong>Primary endpoint:</strong> percentage change in CT-measured VAT at 26 weeks, prespecified. <strong>Key secondary:</strong> subcutaneous fat, IGF-1, fasting glucose and HbA1c — the last because glucose intolerance is a labelled risk and would determine whether any metabolic benefit is net positive.</p>
+<p>Given the ~15% effect and ~40 cm² standard deviations seen in the HIV trials, detecting a similar effect needs roughly <strong>150–200 per arm</strong>. Duration 26 weeks with a <strong>26-week off-drug follow-up</strong> to quantify how fast the effect reverses — the durability question is as important as the efficacy question and is cheap to answer once the trial exists.</p>
+<p>A three-arm design adding a GLP-1 comparator would be far more informative and only modestly more expensive, since the honest question is not "does it work" but "does it work well enough to matter next to what already exists."</p>
+
+<h2>What would change this grade</h2>
+<h4>Upward</h4>
+<ul>
+  <li>An adequately powered RCT in an HIV-negative population with elevated visceral fat → the single change that would move Indication Match off Mismatched.</li>
+  <li>Independent replication outside the Theratechnologies programme → moves Source Independence.</li>
+  <li>Long-term cardiovascular outcome data → would retire the label's own stated limitation.</li>
+  <li>Evidence that the effect persists after discontinuation → repairs step 7.</li>
+</ul>
+<h4>Downward</h4>
+<ul>
+  <li>Post-marketing signal linking sustained IGF-1 elevation to neoplasm incidence.</li>
+  <li>Trial evidence of clinically meaningful glucose deterioration outweighing the lipid benefit.</li>
+  <li>A head-to-head against a GLP-1 showing a substantially smaller effect, which would make the comparative case worse without changing the absolute one.</li>
+</ul>
+<h4>Would not change it</h4>
+<ul>
+  <li>More data in HIV-associated lipodystrophy. That question is answered; it is not the question the market is asking.</li>
+  <li>The fact of FDA approval, invoked for general fat loss. Approval is indication-specific, and this label disclaims that use in writing.</li>
+  <li>IGF-1 elevation presented as an efficacy outcome. It is a pharmacodynamic marker and a monitored safety parameter, not a clinical benefit.</li>
+</ul>
+
+<div class="foot">
+  <p><strong>Not a purchasing guide.</strong> This record describes what has and has not been studied. Doses appear only as facts about what was studied or what is sold, for the route/dose mismatch check — never as instruction.</p>
+  <p>Protocol v1.0. Record upgraded 9 Aug 2026 — efficacy figures retrieved via NCBI E-utilities after direct PubMed fetches were rate-limited. Two claims corrected: the glucose-risk framing and the post-discontinuation reversal claim, both noted inline.</p>
+  <p><strong>Sources, all <span class="ret">retrieved</span>:</strong> EGRIFTA SV prescribing information, FDA label 022505s012s013, revised 07/2019 (HIGHLIGHTS section) · Falutz J, Allas S, Blot K, Potvin D, Kotler D, Somero M, Berger D, Brown S, Richmond G, Fessel J, Turner R, Grinspoon S. <em>N Engl J Med</em> 2007;357(23):2359–70, PMID 18057338, NCT00123253 · Falutz J, Mamputu JC, Potvin D, Moyle G, Soulban G, Loughrey H, Marsolais C, Turner R, Grinspoon S. <em>J Clin Endocrinol Metab</em> 2010;95(9):4291–304, PMID 20554713.</p>
+</div>
+
+</main>
+</body>
+</html>

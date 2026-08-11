@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PT-141 (Bremelanotide) — Evidence Record</title>
+<style>
+:root{
+  --bg:#faf9f7; --panel:#fff; --ink:#1a1a1a; --ink-2:#4a4a48; --ink-3:#78766f;
+  --line:#e3e0da; --line-2:#efece7;
+  --accent:#7a3b2e; --accent-soft:#f3ebe8;
+  --warn:#9a6a12; --warn-soft:#fdf4e3;
+  --bad:#8c2f2f; --bad-soft:#faecec;
+  --ok:#2f5f45; --ok-soft:#e9f2ec;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#16150f; --panel:#1e1d17; --ink:#eceae4; --ink-2:#bdbab2; --ink-3:#8d8a82;
+  --line:#332f26; --line-2:#282419; --accent:#d9856f; --accent-soft:#2a1e19;
+  --warn:#dfae5c; --warn-soft:#2b2213; --bad:#e08585; --bad-soft:#2d1a1a;
+  --ok:#7fbb98; --ok-soft:#16241c;}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+main{max-width:830px;margin:0 auto;padding:30px 26px 100px}
+h2{font-size:19px;margin:34px 0 8px;letter-spacing:-.015em;font-weight:660;padding-bottom:6px;border-bottom:1px solid var(--line)}
+h4{font-size:13px;margin:18px 0 6px;font-weight:680;color:var(--ink-2);text-transform:uppercase;letter-spacing:.05em}
+p{margin:0 0 12px;color:var(--ink-2)}
+strong{color:var(--ink);font-weight:640}
+ul,ol{margin:0 0 13px;padding-left:20px;color:var(--ink-2)} li{margin-bottom:5px}
+code{font-family:var(--mono);font-size:12px;background:var(--line-2);padding:1.5px 5px;border-radius:3px;color:var(--ink)}
+a{color:var(--accent)}
+table{width:100%;border-collapse:collapse;font-size:12.8px;margin:12px 0 16px}
+th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);padding:7px 9px;border-bottom:1.5px solid var(--line);font-weight:680;vertical-align:bottom}
+td{padding:8px 9px;border-bottom:1px solid var(--line-2);vertical-align:top;color:var(--ink-2)}
+tr:last-child td{border-bottom:none} td strong{color:var(--ink)}
+blockquote{margin:13px 0;padding:10px 16px;border-left:2px solid var(--line);font-family:var(--serif);font-size:14px;color:var(--ink-2);font-style:italic}
+.back{font-size:12px;color:var(--ink-3);text-decoration:none;display:inline-block;margin-bottom:16px}
+.back:hover{color:var(--accent)}
+.mast{border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:22px 24px;margin-bottom:8px}
+.mast h1{font-size:31px;margin:0 0 4px;letter-spacing:-.03em;font-weight:690}
+.mast .sold{font-size:13px;color:var(--ink-2);margin-bottom:3px}
+.mast .meta{font-size:11px;color:var(--ink-3);font-family:var(--mono)}
+.axes{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:18px 0 0}
+.ax{padding:11px 13px;border-radius:7px;border:1px solid var(--line);background:var(--bg)}
+.ax b{display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);margin-bottom:5px;font-weight:680}
+.chip{display:inline-block;font-size:11px;font-weight:680;padding:2.5px 8px;border-radius:4px;font-family:var(--mono)}
+.L1,.L2{background:var(--ok-soft);color:var(--ok)} .L4{background:var(--warn-soft);color:var(--warn)} .L5{background:var(--bad-soft);color:var(--bad)}
+.Mismatched{background:var(--bad-soft);color:var(--bad)} .Concentrated{background:var(--warn-soft);color:var(--warn)}
+.ax .note{display:block;font-size:11px;color:var(--ink-3);margin-top:4px;line-height:1.35}
+.flag{display:inline-block;font-size:10px;font-family:var(--mono);font-weight:680;padding:2px 6px;border-radius:4px;background:var(--bad-soft);color:var(--bad);margin-right:4px}
+.flag.sel{background:var(--warn-soft);color:var(--warn)}
+.call{border-left:3px solid var(--accent);background:var(--accent-soft);padding:13px 16px;border-radius:0 7px 7px 0;margin:16px 0;font-size:13.5px}
+.call.w{border-left-color:var(--warn);background:var(--warn-soft)}
+.call.b{border-left-color:var(--bad);background:var(--bad-soft)}
+.call.g{border-left-color:var(--ok);background:var(--ok-soft)}
+.call b.hd{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px;color:var(--accent);font-weight:700}
+.call.w b.hd{color:var(--warn)} .call.b b.hd{color:var(--bad)} .call.g b.hd{color:var(--ok)}
+.call p:last-child{margin-bottom:0}
+.prov{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin:9px 0 0;padding:7px 10px;background:var(--line-2);border-radius:5px;line-height:1.55}
+.lfs{color:var(--warn);font-weight:680} .ret{color:var(--ok);font-weight:680}
+.chain{list-style:none;padding:0;margin:12px 0;counter-reset:s}
+.chain li{counter-increment:s;position:relative;padding:8px 0 8px 38px;border-bottom:1px solid var(--line-2);font-size:13.3px}
+.chain li:last-child{border-bottom:none}
+.chain li::before{content:counter(s);position:absolute;left:0;top:8px;width:22px;height:22px;border-radius:50%;background:var(--line-2);color:var(--ink-3);font-size:10.5px;font-weight:680;display:flex;align-items:center;justify-content:center;font-family:var(--mono)}
+.chain li.hum::before{background:var(--ok-soft);color:var(--ok)}
+.chain li.ani::before{background:var(--warn-soft);color:var(--warn)}
+.chain li.no::before{background:var(--bad-soft);color:var(--bad)}
+.st{display:block;font-size:10.5px;font-weight:680;text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+.st.hum{color:var(--ok)} .st.ani{color:var(--warn)} .st.no{color:var(--bad)}
+.foot{border-top:1px solid var(--line);padding-top:15px;font-size:11px;color:var(--ink-3);margin-top:40px}
+@media(max-width:640px){.axes{grid-template-columns:1fr}main{padding:20px 16px 60px}}
+@media print{body{background:#fff}.back{display:none}}
+</style>
+</head>
+<body>
+<main>
+
+<a class="back" href="../peptide-evidence-brief.html">← Peptide Evidence Brief</a>
+
+<div class="mast">
+  <h1>PT-141 <span style="font-size:18px;color:var(--ink-3);font-weight:400">bremelanotide</span></h1>
+  <div class="sold"><strong>Sold as</strong> "PT 141 10mg (10 vials/kit)", $168/kit — lyophilised, route not stated, labelled research use only.</div>
+  <div class="meta">Record 2026-08-09 · Protocol v1.0 · Approved drug sold as a research chemical</div>
+  <div class="axes">
+    <div class="ax"><b>Evidence Level</b><span class="chip L1">L1</span>
+      <span class="note">Two large consistent Phase 3 RCTs with prespecified coprimary endpoints, published in full — for HSDD in premenopausal women</span></div>
+    <div class="ax"><b>Indication Match</b><span class="chip Mismatched">Mismatched</span>
+      <span class="note">Sold to a population and by a product form the trials did not study</span></div>
+    <div class="ax"><b>Source Independence</b><span class="chip Concentrated">Concentrated</span>
+      <span class="note">Both pivotal trials funded by Palatin and AMAG</span></div>
+  </div>
+  <div style="margin-top:12px"><span class="flag">ROUTE/DOSE</span><span class="flag sel">SELECTION</span></div>
+</div>
+
+<div class="call">
+  <b class="hd">Bottom line</b>
+  <p>This is the strongest evidence base in the catalogue so far, and the record still lands on Mismatched — which is exactly why the axes are not averaged. The drug works, in the narrow and specific sense that two adequately powered Phase 3 trials met prespecified coprimary endpoints and FDA approved it. But the effect is small (FSFI-desire +0.35 points on a scale where the trial's own responder threshold was 1.2), the approved population is <strong>premenopausal women with diagnosed HSDD</strong>, and the trials' own post-hoc analysis found <strong>no significant difference in satisfying sexual events</strong> — the outcome most people would actually care about. Sold as a general on-demand libido agent for both sexes, from a 10 mg research vial against a 1.75 mg approved dose, essentially none of that evidence transfers. The Evidence Level axis is high and the Indication Match axis is doing the work.</p>
+</div>
+
+<h2>What it is</h2>
+<p>A synthetic cyclic heptapeptide analogue of α-MSH, acting as an agonist at melanocortin receptors — principally <strong>MC3R and MC4R</strong>, which is what distinguishes it from the tanning-oriented melanocortins that hit MC1R hardest. It is a metabolite of Melanotan II, developed deliberately as a separate agent.</p>
+<p>Unlike PDE5 inhibitors, which act peripherally on vascular smooth muscle, bremelanotide acts centrally on pathways involved in sexual desire. That mechanistic difference is real and is the basis of the drug's rationale.</p>
+<p><strong>Regulatory status:</strong> approved by FDA in June 2019 as <strong>Vyleesi</strong>, for acquired, generalised hypoactive sexual desire disorder (HSDD) in premenopausal women. Delivered as a single-use 1.75 mg subcutaneous autoinjector, used on demand, with a labelled maximum of one dose per 24 hours and eight per month. There is <strong>no approval for men</strong> and no approval in postmenopausal women.</p>
+<div class="prov">source: Kingsberg SA et al., Obstet Gynecol 2019;134(5):899–908 · PMID 31599840 · DOI 10.1097/AOG.0000000000003500 · retrieval: <span class="ret">retrieved</span> (abstract, figure legends, trial registration and funding statement read in full)</div>
+
+<h2>Theoretical pathway</h2>
+<ol class="chain">
+  <li class="hum">Binds and activates central melanocortin receptors MC3R/MC4R<span class="st hum">demonstrated — mechanism of action accepted at approval</span></li>
+  <li class="hum">Modulates hypothalamic pathways involved in sexual desire<span class="st hum">demonstrated in humans by downstream effect</span></li>
+  <li class="hum">Produces a measurable increase in self-reported desire and reduction in desire-related distress<span class="st hum">demonstrated in two Phase 3 RCTs, prespecified coprimary endpoints</span></li>
+  <li class="no">That increase translates into more satisfying sexual events<span class="st no">tested and NOT demonstrated — post-hoc analysis found no significant difference</span></li>
+  <li class="no">The effect generalises to men, to postmenopausal women, or to people without diagnosed HSDD<span class="st no">never studied at this dose and route</span></li>
+</ol>
+
+<div class="call b">
+  <b class="hd">⚠ Where the chain breaks — step 4, and it breaks unusually cleanly</b>
+  <p>Most records in this dataset break at exposure, because nobody measured whether the molecule reaches anything. This one is different and more instructive: the chain was carried all the way to a clinical endpoint by well-run trials, and then the last link <strong>failed a test it was actually given</strong>.</p>
+  <p>The trials showed a statistically robust improvement in a questionnaire measure of desire and a matching reduction in distress about low desire. What they did not show, on the trials' own post-hoc analysis, was any significant difference between bremelanotide and placebo in the percentage of sexual encounters that were satisfying sexual events. Desire moved; the events did not.</p>
+  <p>That is a real and reportable finding rather than an absence, and it is the single most useful thing in this record for anyone trying to calibrate what the drug does.</p>
+</div>
+
+<h2>Claimed vs. supported indications</h2>
+<table>
+  <thead><tr><th>Ailment</th><th>Marketed claim</th><th>Evidence that exists</th><th>Level</th><th>Natural history untreated</th><th>Nearest approved option</th></tr></thead>
+  <tbody>
+    <tr><td><strong>HSDD, premenopausal women</strong></td><td>The approved use; not how the research-chemical market frames it</td><td>Two identical Phase 3 RCTs, n=1,247 safety / 1,202 mITT, 24 weeks, 1.75 mg SC on demand. FSFI-desire +0.35 (P&lt;.001); FSDS-DAO distress −0.33 (P&lt;.001)</td><td><span class="chip L1">L1</span></td><td>Fluctuates substantially. Placebo arms improved on both coprimary measures; sexual-medicine trials carry large placebo responses and the condition varies with relationship, mood and life circumstance</td><td>Flibanserin (Addyi), daily oral. Bremelanotide itself. Psychosexual therapy</td></tr>
+    <tr><td>Libido in men</td><td>Marketed to men as often as women in the peptide market; framed as on-demand "desire" dosing</td><td><strong>None at this dose and route.</strong> No approval, no Phase 3 programme in men at 1.75 mg SC</td><td><span class="chip L5">L5</span></td><td>Low desire in men is commonly secondary — to sleep debt, depression, relationship factors, medication, or hypogonadism — and often resolves when the cause is addressed</td><td>Depends on cause. Testosterone replacement where genuine hypogonadism is documented; PDE5 inhibitors treat erectile function, not desire</td></tr>
+    <tr><td>Erectile dysfunction</td><td>Frequently conflated with the desire indication in market positioning</td><td>Earlier development by a different (intranasal) route was <strong>discontinued</strong>; the SC programme that succeeded targeted desire, not erectile function</td><td><span class="chip L5">L5</span> for the sold form</td><td>Often vascular or medication-related; progressive if the underlying cause is untreated</td><td>PDE5 inhibitors — sildenafil, tadalafil — with a very large and independent evidence base</td></tr>
+    <tr><td>Postmenopausal women</td><td>Not distinguished in market framing</td><td><strong>None.</strong> Trials enrolled premenopausal women only</td><td><span class="chip L5">L5</span></td><td>Desire changes around menopause are common and multifactorial</td><td>Systemic or local oestrogen where indicated; psychosexual therapy</td></tr>
+  </tbody>
+</table>
+
+<h2>Expected utility — reasoned, not scored</h2>
+<p>Set the prior from the components.</p>
+<p>For a premenopausal woman with diagnosed HSDD taking the approved product at the approved dose: this is the one situation in this dataset where the evidence genuinely supports a modest expectation. Two trials, prespecified endpoints, consistent direction, regulatory review. The honest framing of the size is that the desire score moved about 0.35 points against a responder threshold of 1.2, and roughly 25% of treated women met that threshold versus 17% on placebo — an eight-point absolute difference, meaning about one in twelve treated women got a response attributable to the drug rather than to placebo or to time. That is a real drug effect and a small one.</p>
+<p>For everyone else — men, postmenopausal women, anyone without diagnosed HSDD, anyone using a 10 mg research vial rather than a 1.75 mg autoinjector — the trial evidence does not transfer. The mechanism is plausible and centrally acting, which is more than most compounds here can say, but plausibility is not the same as a demonstrated effect, and the one place the chain was carried to a hard behavioural endpoint it did not hold.</p>
+<div class="call w"><b class="hd">Dominant uncertainty</b>
+  <p><strong>Whether a desire-score change without an events change is worth anything to the person experiencing it.</strong> This is not primarily an empirical gap — it is a question about what the endpoint means. The distress reduction was real and prespecified, and reduced distress about low desire may matter on its own terms. But a reader who expects the drug to change what actually happens should know that this was measured and did not separate from placebo.</p></div>
+
+<h2>Registry record</h2>
+<ul>
+  <li><code>NCT02333071</code> — RECONNECT Study 301. Phase 3, randomised, double-blind, placebo-controlled, multicentre. Began 7 Jan 2015, concluded 26 Jul 2016. <strong>Results published.</strong></li>
+  <li><code>NCT02338960</code> — RECONNECT Study 302. Identical design. Began 28 Jan 2015, concluded 4 Aug 2016. <strong>Results published.</strong></li>
+</ul>
+<p>Sponsor: Palatin Technologies, with AMAG Pharmaceuticals. Both trials completed, both published in full in a peer-reviewed journal with the primary analysis intact. This is what a complete registry record looks like, and it is worth stating plainly because almost nothing else in this catalogue has one.</p>
+<div class="call w"><b class="hd">⚠ Independent registry check incomplete</b><p>A ClinicalTrials.gov search as of 9 August 2026 could not be completed — the API timed out and the study pages are client-rendered. NCT numbers and dates above come from the published paper's trial-registration statement, which is a primary source for those identifiers. A current search for post-approval or off-label trials has <strong>not</strong> been performed.</p></div>
+
+<h2>Human evidence</h2>
+<table>
+  <thead><tr><th>Citation</th><th>Design</th><th>n</th><th>Route &amp; dose</th><th>Retrieval</th></tr></thead>
+  <tbody>
+    <tr><td>Kingsberg et al. 2019, Obstet Gynecol</td><td>Two identical Phase 3 RCTs, double-blind, placebo-controlled, 24 wk</td><td>1,267 randomised · 1,247 safety · 1,202 mITT</td><td>1.75 mg SC, on demand</td><td><span class="ret">retrieved</span> (abstract + figure legends)</td></tr>
+    <tr><td>Responder analysis — ~25% vs 17% reaching the 1.2-point FSFI-D threshold</td><td>Secondary/derived analysis</td><td>—</td><td>—</td><td><span class="lfs">⚠ learned-from-summary</span></td></tr>
+    <tr><td>Effect size 0.21–0.26 across studies</td><td>Derived statistic</td><td>—</td><td>—</td><td><span class="lfs">⚠ learned-from-summary</span></td></tr>
+  </tbody>
+</table>
+<p><strong>Coprimary results as published</strong>, all `retrieved`:</p>
+<table>
+  <thead><tr><th>Endpoint</th><th>Study 301</th><th>Study 302</th><th>Integrated</th></tr></thead>
+  <tbody>
+    <tr><td>FSFI-desire domain, change vs placebo</td><td>+0.30 (P&lt;.001)</td><td>+0.42 (P&lt;.001)</td><td><strong>+0.35 (P&lt;.001)</strong></td></tr>
+    <tr><td>FSDS-DAO item 13 (distress), change vs placebo</td><td>−0.37 (P&lt;.001)</td><td>−0.29 (P=.005)</td><td><strong>−0.33 (P&lt;.001)</strong></td></tr>
+    <tr><td>Satisfying sexual events (post hoc)</td><td colspan="3"><strong>No significant difference between treatment groups</strong></td></tr>
+  </tbody>
+</table>
+<p>Population: mean age 39, 85.6% white, 96.6% from US sites. The demographic narrowness is worth recording — generalisation beyond it is an assumption, not a finding.</p>
+
+<h2>Preclinical basis</h2>
+<p>Not load-bearing here and deliberately brief. Bremelanotide's melanocortin pharmacology was characterised preclinically, but the compound has human Phase 3 data on clinical endpoints, so the animal work carries no weight in this assessment that the human trials do not already carry better. Where a compound has adequate human evidence, preclinical rationale stops being evidence and becomes background.</p>
+
+<h2>Safety signal</h2>
+<p>Kept separate from efficacy.</p>
+<h4>From the pivotal trials</h4>
+<p>Adverse events occurring in <strong>10% or more of bremelanotide patients in both studies</strong>: <strong>nausea, flushing, and headache</strong>. The authors characterise most treatment-emergent events as tolerability-related and mostly mild or moderate.</p>
+<p>Nausea is the dominant tolerability problem with this drug class and is a common reason for discontinuation in practice.</p>
+<h4>Known class and label issues</h4>
+<ul>
+  <li><strong>Transient blood pressure increase</strong> with a compensatory heart-rate decrease is a recognised melanocortin-agonist effect and is the reason the earlier intranasal development programme was abandoned. The approved product carries cardiovascular cautions and is not intended for people with uncontrolled hypertension or known cardiovascular disease. <span class="lfs">⚠ learned-from-summary</span> — label not retrieved in this pass.</li>
+  <li><strong>Focal hyperpigmentation</strong> can occur with repeated dosing, more likely at higher cumulative exposure and in people with darker skin. This is the same MC1R-mediated effect that Melanotan II is taken for deliberately, appearing here as an unwanted one. <span class="lfs">⚠ learned-from-summary</span></li>
+  <li>Injection-site reactions.</li>
+</ul>
+<h4>Known unknowns for the product as sold</h4>
+<ul>
+  <li>The approved dose is <strong>1.75 mg with a labelled monthly maximum of eight doses.</strong> A 10 mg vial has no such constraint, and cumulative-exposure effects — hyperpigmentation above all — are dose-dependent.</li>
+  <li>No safety data exist for men at this dose and route.</li>
+  <li>Research-vial material carries no assurance of the sterility, endotoxin control or fill accuracy that the approved autoinjector guarantees.</li>
+</ul>
+<div class="call b"><b class="hd">The safety record belongs to the product, not the molecule</b>
+  <p>Bremelanotide has a genuine safety database — over 1,200 participants in controlled trials with systematic AE collection. That database describes <strong>a specific GMP autoinjector delivering 1.75 mg, used up to eight times a month, in premenopausal women.</strong> It does not describe a 10 mg lyophilised vial reconstituted by the user. This is the central distinction the protocol draws for approved drugs sold as research chemicals, and PT-141 is the clearest illustration of it in the catalogue.</p></div>
+
+<h2>Unfavourable and counterbalancing findings</h2>
+<ul>
+  <li><strong>No significant difference in satisfying sexual events</strong> — the trials' own post-hoc analysis, and the most important negative result in the record.</li>
+  <li><strong>The effect is small.</strong> A 0.35-point shift against a 1.2-point responder threshold; effect size 0.21–0.26 <span class="lfs">⚠ lfs</span>.</li>
+  <li><strong>Study 302's distress endpoint was the weakest of the four</strong> at P=.005 — still significant, but a reminder that the coprimary structure was not uniformly emphatic.</li>
+  <li><strong>Both trials were sponsor-funded</strong> by Palatin and AMAG, and several authors carry sponsor affiliations. Normal for pharmaceutical development, recorded under Source Independence.</li>
+  <li><strong>Narrow demographics</strong> — 85.6% white, 96.6% US sites.</li>
+  <li>Commercially, Vyleesi did not become a widely used product after approval, which is at least consistent with the modest effect size.</li>
+</ul>
+<div class="call g"><b class="hd">Credit where due</b>
+  <p>This is a properly conducted drug development programme and it should not be graded as if it were a peptide-forum compound. Prespecified coprimary endpoints. Two identical adequately powered trials rather than one. Full publication in a major peer-reviewed journal with the negative post-hoc result <em>included in the paper's own figures</em> rather than buried. Registered trials with matching published results. Regulatory review by an agency that had previously rejected products in this space.</p>
+  <p>The mechanism is also genuinely novel — a centrally acting agent for desire, in a field where everything else works peripherally on arousal. Whatever the size of the effect, the evidence that it exists is real.</p></div>
+
+<h2>Flags</h2>
+<h4><span class="flag">ROUTE/DOSE</span></h4>
+<table>
+  <thead><tr><th>Gap</th><th>Magnitude</th></tr></thead>
+  <tbody>
+    <tr><td>Dose per vial vs approved dose</td><td>Approved dose <strong>1.75 mg</strong>. Vial contains <strong>10 mg</strong> — roughly <strong>5.7 approved doses per vial</strong>.</td></tr>
+    <tr><td>Cumulative exposure ceiling</td><td>The label limits use to <strong>eight doses per month</strong> (≈14 mg/month). A 10-vial kit contains 100 mg, or about <strong>7 months</strong> of maximum labelled exposure, with no dispensing control.</td></tr>
+    <tr><td>Formulation</td><td>Trial evidence attaches to a single-use GMP autoinjector with a fixed metered dose. The sold product is a lyophilised vial requiring user reconstitution and volumetric measurement — a different product delivering a user-determined dose.</td></tr>
+    <tr><td>Population</td><td>Studied in premenopausal women with diagnosed HSDD. Marketed without regard to sex, menopausal status or diagnosis.</td></tr>
+  </tbody>
+</table>
+<h4><span class="flag sel">SELECTION</span></h4>
+<p>Both pivotal trials were designed, funded and analysed by the sponsors, and the published paper carries sponsor-affiliated authorship. This is the ordinary structure of drug development and is not an accusation — but it is why the axis reads Concentrated rather than Independent, and it is the reason the post-hoc satisfying-events result deserves the emphasis this record gives it: negative findings from sponsor analyses are, if anything, under-reported rather than over-reported.</p>
+<h4>No IDENTITY flag</h4>
+<p>Unusually for this catalogue, identity is not in question. Bremelanotide has an INN, an approved product, and a defined structure. The vendor names the compound directly rather than through a code or an analogue.</p>
+
+<h2>What a positive trial would need to show</h2>
+<p>The approved indication does not need another trial. The uses the compound is actually sold for do.</p>
+<p><strong>For men with low sexual desire:</strong> randomised, double-blind, placebo-controlled, parallel-group. Population — men with acquired, generalised low desire and <em>documented normal testosterone</em>, so the trial tests the drug rather than re-discovering hypogonadism. Primary endpoint should be a co-primary of a validated desire measure <strong>and</strong> a behavioural event count, precisely because the women's programme showed those two can come apart. Duration 24 weeks. Given the effect sizes seen in women (0.21–0.26), detecting a comparable effect needs roughly <strong>250–350 per arm</strong>. Powered for the event endpoint, not just the questionnaire.</p>
+<p>This is an ordinary, entirely feasible trial. Its absence is a commercial fact: the approved product's own commercial performance was weak, which removes the incentive to fund label expansion, while the research-chemical channel supplies the same molecule to men without needing any evidence at all.</p>
+
+<h2>What would change this grade</h2>
+<h4>Upward</h4>
+<ul>
+  <li>An adequately powered RCT in men with a behavioural co-primary → would move the male-use grade off L5 for the first time.</li>
+  <li>A trial in postmenopausal women.</li>
+  <li>Independent (non-sponsor) replication of the desire effect → would move Source Independence toward Independent.</li>
+  <li>Evidence that the satisfying-events endpoint separates from placebo in an adequately powered prespecified analysis → would repair step 4 of the chain.</li>
+</ul>
+<h4>Downward</h4>
+<ul>
+  <li>Post-marketing surveillance showing cardiovascular events at cumulative exposures above the labelled monthly maximum.</li>
+  <li>Case series of hyperpigmentation from high-dose research-vial use.</li>
+</ul>
+<h4>Would not change it</h4>
+<ul>
+  <li>More mechanistic or receptor-binding work. The mechanism is not the weak link; the clinical endpoint is.</li>
+  <li>The existence of the FDA approval, invoked for uses outside the approved population. Approval is indication-specific and does not travel with the molecule.</li>
+</ul>
+
+<div class="foot">
+  <p><strong>Not a purchasing guide.</strong> This record describes what has and has not been studied. Doses appear only as facts about what was studied or what is sold, for the route/dose mismatch check — never as instruction.</p>
+  <p>Protocol v1.0. Primary source: Kingsberg SA, Clayton AH, Portman D, Williams LA, Krop J, Jordan R, Lucas J, Simon JA. "Bremelanotide for the Treatment of Hypoactive Sexual Desire Disorder: Two Randomized Phase 3 Trials." <em>Obstet Gynecol</em> 2019;134(5):899–908. PMID 31599840.</p>
+</div>
+
+</main>
+</body>
+</html>

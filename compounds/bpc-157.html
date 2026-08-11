@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BPC-157 — Evidence Record</title>
+<style>
+:root{
+  --bg:#faf9f7; --panel:#fff; --ink:#1a1a1a; --ink-2:#4a4a48; --ink-3:#78766f;
+  --line:#e3e0da; --line-2:#efece7;
+  --accent:#7a3b2e; --accent-soft:#f3ebe8;
+  --warn:#9a6a12; --warn-soft:#fdf4e3;
+  --bad:#8c2f2f; --bad-soft:#faecec;
+  --ok:#2f5f45; --ok-soft:#e9f2ec;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#16150f; --panel:#1e1d17; --ink:#eceae4; --ink-2:#bdbab2; --ink-3:#8d8a82;
+  --line:#332f26; --line-2:#282419; --accent:#d9856f; --accent-soft:#2a1e19;
+  --warn:#dfae5c; --warn-soft:#2b2213; --bad:#e08585; --bad-soft:#2d1a1a;
+  --ok:#7fbb98; --ok-soft:#16241c;}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+main{max-width:830px;margin:0 auto;padding:30px 26px 100px}
+h2{font-size:19px;margin:34px 0 8px;letter-spacing:-.015em;font-weight:660;padding-bottom:6px;border-bottom:1px solid var(--line)}
+h4{font-size:13px;margin:18px 0 6px;font-weight:680;color:var(--ink-2);text-transform:uppercase;letter-spacing:.05em}
+p{margin:0 0 12px;color:var(--ink-2)}
+strong{color:var(--ink);font-weight:640}
+ul,ol{margin:0 0 13px;padding-left:20px;color:var(--ink-2)} li{margin-bottom:5px}
+code{font-family:var(--mono);font-size:12px;background:var(--line-2);padding:1.5px 5px;border-radius:3px;color:var(--ink)}
+a{color:var(--accent)}
+table{width:100%;border-collapse:collapse;font-size:12.8px;margin:12px 0 16px}
+th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);padding:7px 9px;border-bottom:1.5px solid var(--line);font-weight:680;vertical-align:bottom}
+td{padding:8px 9px;border-bottom:1px solid var(--line-2);vertical-align:top;color:var(--ink-2)}
+tr:last-child td{border-bottom:none} td strong{color:var(--ink)}
+blockquote{margin:13px 0;padding:10px 16px;border-left:2px solid var(--line);font-family:var(--serif);font-size:14px;color:var(--ink-2);font-style:italic}
+
+.back{font-size:12px;color:var(--ink-3);text-decoration:none;display:inline-block;margin-bottom:16px}
+.back:hover{color:var(--accent)}
+.mast{border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:22px 24px;margin-bottom:8px}
+.mast h1{font-size:31px;margin:0 0 4px;letter-spacing:-.03em;font-weight:690}
+.mast .sold{font-size:13px;color:var(--ink-2);margin-bottom:3px}
+.mast .meta{font-size:11px;color:var(--ink-3);font-family:var(--mono)}
+.axes{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:18px 0 0}
+.ax{padding:11px 13px;border-radius:7px;border:1px solid var(--line);background:var(--bg)}
+.ax b{display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);margin-bottom:5px;font-weight:680}
+.chip{display:inline-block;font-size:11px;font-weight:680;padding:2.5px 8px;border-radius:4px;font-family:var(--mono)}
+.L4{background:var(--warn-soft);color:var(--warn)} .L5{background:var(--bad-soft);color:var(--bad)}
+.Mismatched{background:var(--bad-soft);color:var(--bad)} .Concentrated{background:var(--warn-soft);color:var(--warn)}
+.ax .note{display:block;font-size:11px;color:var(--ink-3);margin-top:4px;line-height:1.35}
+.flag{display:inline-block;font-size:10px;font-family:var(--mono);font-weight:680;padding:2px 6px;border-radius:4px;background:var(--bad-soft);color:var(--bad);margin-right:4px}
+.flag.sel{background:var(--warn-soft);color:var(--warn)}
+.call{border-left:3px solid var(--accent);background:var(--accent-soft);padding:13px 16px;border-radius:0 7px 7px 0;margin:16px 0;font-size:13.5px}
+.call.w{border-left-color:var(--warn);background:var(--warn-soft)}
+.call.b{border-left-color:var(--bad);background:var(--bad-soft)}
+.call b.hd{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px;color:var(--accent);font-weight:700}
+.call.w b.hd{color:var(--warn)} .call.b b.hd{color:var(--bad)}
+.call p:last-child{margin-bottom:0}
+.prov{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin:9px 0 0;padding:7px 10px;background:var(--line-2);border-radius:5px;line-height:1.55}
+.lfs{color:var(--warn);font-weight:680} .ret{color:var(--ok);font-weight:680}
+.chain{list-style:none;padding:0;margin:12px 0;counter-reset:s}
+.chain li{counter-increment:s;position:relative;padding:8px 0 8px 38px;border-bottom:1px solid var(--line-2);font-size:13.3px}
+.chain li:last-child{border-bottom:none}
+.chain li::before{content:counter(s);position:absolute;left:0;top:8px;width:22px;height:22px;border-radius:50%;background:var(--line-2);color:var(--ink-3);font-size:10.5px;font-weight:680;display:flex;align-items:center;justify-content:center;font-family:var(--mono)}
+.chain li.ani::before{background:var(--warn-soft);color:var(--warn)}
+.chain li.no::before{background:var(--bad-soft);color:var(--bad)}
+.st{display:block;font-size:10.5px;font-weight:680;text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+.st.ani{color:var(--warn)} .st.no{color:var(--bad)}
+.foot{border-top:1px solid var(--line);padding-top:15px;font-size:11px;color:var(--ink-3);margin-top:40px}
+@media(max-width:640px){.axes{grid-template-columns:1fr}main{padding:20px 16px 60px}}
+@media print{body{background:#fff}.back{display:none}}
+</style>
+</head>
+<body>
+<main>
+
+<a class="back" href="../peptide-evidence-brief.html">← Peptide Evidence Brief</a>
+
+<div class="mast">
+  <h1>BPC-157</h1>
+  <div class="sold"><strong>Sold as</strong> "BPC 157 10mg (10 vials/Kit)", $152/kit — lyophilised, route not stated, labelled research use only. Also a component of four blends (KLOW, Glow, Deadpool, BPC-157/TB4).</div>
+  <div class="meta">Record 2026-08-08 · Protocol v1.0 · PCAC-reviewed</div>
+  <div class="axes">
+    <div class="ax"><b>Evidence Level</b><span class="chip L4">L4</span> <span class="chip L5">L5</span>
+      <span class="note">L4 for ulcerative colitis by rectal enema · L5 for every indication it is actually marketed for</span></div>
+    <div class="ax"><b>Indication Match</b><span class="chip Mismatched">Mismatched</span>
+      <span class="note">Route, dose and indication all differ from what was studied</span></div>
+    <div class="ax"><b>Source Independence</b><span class="chip Concentrated">Concentrated</span>
+      <span class="note">Preclinical corpus dominated by the discovering laboratory</span></div>
+  </div>
+  <div style="margin-top:12px"><span class="flag">IDENTITY</span><span class="flag">ROUTE/DOSE</span><span class="flag sel">SELECTION</span></div>
+</div>
+
+<div class="call">
+  <b class="hd">Bottom line</b>
+  <p>The Indication Match axis is doing all the work, and it is the reason the three grades must not be averaged. There is a real randomised placebo-controlled trial — but it studied an 80 mg <strong>rectal enema</strong> in ulcerative colitis, it was never published beyond a meeting abstract, and its between-group difference was 1.6 points with a 95% CI of −4.84 to 1.62, which spans zero. Even taken at face value the trial is null. Meanwhile the compound is sold and discussed almost entirely for tendon, ligament and joint repair, and FDA states that it identified <strong>no clinical studies of BPC-157 in tendonitis</strong>. The L4 is attached to a use nobody buys it for; the use everybody buys it for sits at L5 on rodent data. A reader who collapses this to "there's an RCT" has been misled by the arithmetic.</p>
+</div>
+
+<h2>What it is</h2>
+<p>A synthetic 15-amino-acid fragment (<code>H-Gly-Glu-Pro-Pro-Pro-Gly-Lys-Pro-Ala-Asp-Asp-Ala-Gly-Leu-Val-OH</code>) of a protein reported in human gastric juice, first described by Sikirić and colleagues at the University of Zagreb in 1993. Also called Bepecin or PL-14736.</p>
+<blockquote>"BPC-157 is a common name and not a United States Adopted Name. FDA has encountered multiple salts, and derivatives, including different active moieties, sold commercially under the same common name. Inconsistent naming conventions … represent a safety risk for patients as they may be dosed with a different bulk drug substance than the physician ordered."</blockquote>
+<p>Free base (CAS 137525-51-0, UNII 8ED8NXK95P) and acetate (CAS 216441-37-1, UNII PAR2FC72XP) are distinct bulk drug substances. FDA judged <strong>both forms "not well-characterized."</strong></p>
+<p><strong>Regulatory status:</strong> no approved product in any country. No USP/NF monograph; absent from the European, Japanese and International Pharmacopeias. On the WADA prohibited list, section S0. New Zealand proposed prescription classification in May 2023. FDA proposed in May 2026 that neither form be added to the 503A Bulks List; the PCAC voted against that recommendation on 23 July 2026.</p>
+<div class="prov">source: FDA Briefing Document, BPC-157-related BDSs, 11 May 2026 · retrieval: <span class="ret">retrieved</span></div>
+
+<h2>Theoretical pathway</h2>
+<ol class="chain">
+  <li class="ani">Upregulates growth-factor expression and their receptors<span class="st ani">demonstrated in vitro and in rodents</span></li>
+  <li class="ani">Induces angiogenesis<span class="st ani">demonstrated in rodents</span></li>
+  <li class="ani">Stimulates nitric oxide synthesis<span class="st ani">demonstrated in rodents</span></li>
+  <li class="ani">These converge to accelerate tissue healing<span class="st ani">demonstrated in rodent injury models only</span></li>
+  <li class="no">Binds a specific receptor or target to do any of this<span class="st no">not demonstrated — molecular targets unidentified</span></li>
+  <li class="no">By the route sold, reaches injured human tissue at active concentration<span class="st no">not demonstrated; contradicted by what data exist</span></li>
+  <li class="no">That exposure produces meaningful healing in humans<span class="st no">hypothesised only</span></li>
+</ol>
+
+<div class="call b">
+  <b class="hd">⚠ Where the chain breaks — step 6, exposure</b>
+  <p>Half-life is 5.3 minutes in dogs, 15.2 minutes in rats after IV dosing. In the only human studies sampling plasma, <strong>BPC-157 was not detected at all</strong> after rectal enema; FDA concluded it "does not appear to be absorbed systemically" by that route. There is <strong>no human pharmacokinetic data whatsoever</strong> after oral, subcutaneous, nasal or transdermal administration — the routes actually used.</p>
+  <p>Compounding this: <strong>no dose-response relationship has ever been established.</strong> 10 ng/kg and 10 µg/kg produced identical effects across the fistula, NSAID-lesion and hepatoprotection studies. A flat response across a 1,000-fold dose range is not the signature of receptor-mediated drug action, and FDA says it makes biological plausibility "difficult to assess."</p>
+  <p>So the pathway has steps individually well-demonstrated in rodents, and a foundation — target identity, dose-dependence, human exposure — missing entirely. This is the GHK-Cu pattern: solid biology, molecule doesn't get where it needs to go.</p>
+</div>
+
+<h2>Claimed vs. supported indications</h2>
+<table>
+  <thead><tr><th>Ailment</th><th>Marketed claim</th><th>Evidence that exists</th><th>Level</th><th>Natural history untreated</th><th>Nearest approved option</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Tendon / ligament</strong></td><td>"accelerate the healing of injuries and wounds, including gastric ulcers, tendons, ligaments and bones"; "wolverine compound"</td><td><strong>None in humans.</strong> FDA: "did not identify clinical studies … in these populations." Rodent tendon transection only</td><td><span class="chip L5">L5</span></td><td>Strongly self-limiting. Placebo arms in chronic Achilles tendinopathy improved VISA-A ~8–11 points at 4–12 weeks; meta-analysis of three-armed trials attributes ~24% of observed effect to spontaneous improvement, ~20% to placebo. Natural history "remains ill-defined"</td><td>No approved drug. Progressive / eccentric loading exercise</td></tr>
+    <tr><td>Knee pain</td><td>Implied; sold in "joint healing" blends</td><td>1 uncontrolled study, n=17, 2–4 mg intra-articular, <strong>combined with TB4</strong> so contribution is unidentifiable</td><td><span class="chip L4">L4</span></td><td>High spontaneous and placebo response; regression to the mean dominates at high baseline pain</td><td>NSAIDs, physiotherapy, intra-articular corticosteroid</td></tr>
+    <tr><td>Ulcerative colitis</td><td>"decrease inflammation of the stomach and intestines, which can improve … chron's [sic] disease, and ulcerative colitis"</td><td>1 RCT, n=53, <strong>80 mg rectal enema</strong> × 2 wk, abstract only. Between-group DAI difference 1.6, 95% CI −4.84 to 1.62 — <strong>null</strong></td><td><span class="chip L4">L4</span></td><td>Relapsing-remitting; spontaneous remission occurs, but real mortality risk if undertreated — toxic megacolon, perforation, haemorrhage</td><td><strong>13+ approved options.</strong> 5-ASAs; TNF blockers, anti-integrin, IL-23 antagonists, JAK inhibitors, S1P modulators. Neither ACG nor AGA guideline mentions BPC-157</td></tr>
+    <tr><td>Gut / "gut-brain axis"</td><td>"support … digestion and the normal function of the gut-brain axis"; "cellular wellness, and internal resilience"</td><td><strong>None.</strong> No human study of any design</td><td><span class="chip L5">L5</span></td><td>Non-specific symptom clusters with very high spontaneous fluctuation and placebo response</td><td>Depends on actual diagnosis</td></tr>
+    <tr><td>Interstitial cystitis</td><td>Not prominently marketed</td><td>1 uncontrolled study, n=12, 10 mg intravesical</td><td><span class="chip L4">L4</span></td><td>Fluctuating; flares remit spontaneously</td><td>Pentosan polysulfate, intravesical DMSO, amitriptyline</td></tr>
+  </tbody>
+</table>
+
+<h2>Expected utility — reasoned, not scored</h2>
+<p>Set the prior from the components rather than the conclusion.</p>
+<p>For the musculoskeletal uses that drive essentially all demand: evidence level is L5, the mechanistic chain breaks at exposure rather than plausibility, and the conditions involved — chronic tendinopathy, non-specific joint pain — are among the most placebo-responsive and most spontaneously-remitting in medicine, on timescales of four to twelve weeks. Which is exactly the window over which people judge whether a peptide worked. Those three facts compound. Someone who takes BPC-157 for a sore Achilles and feels better at eight weeks has observed what the placebo arm of a diclofenac trial also observed. The expected marginal contribution above that baseline, given no demonstrated human exposure and no identified target, is close to indistinguishable from zero — and critically, the study that would distinguish it has not been done, so this is a prior and not a finding.</p>
+<p>For ulcerative colitis, where the one controlled trial exists: it was null, it was rectal, and there are thirteen-plus approved alternatives with regulatory-grade evidence for a disease that kills people when undertreated. The comparative statement is not close.</p>
+<div class="call w"><b class="hd">Dominant uncertainty</b><p><strong>Exposure, not efficacy.</strong> Nearly every open question collapses into one: does this molecule, given the way it is actually used, reach any tissue in a person at a concentration that does anything? Nobody has measured it. A single well-conducted human PK study by the subcutaneous route would move this record more than another decade of rodent injury models, and its absence after thirty-three years is the most informative fact in the file.</p></div>
+
+<h2>Registry record</h2>
+<ul>
+  <li><code>NCT02637284</code> — Phase 1, healthy subjects, Mexico. Oral tablet 1/3/6 mg single, then 3 mg q8h × 2 weeks. Estimated enrolment 42. <strong>No results posted; no associated publication identified by FDA.</strong></li>
+  <li>FDA searched ClinicalTrials.gov on <strong>3 December 2025</strong> for "BPC-157" and "Bepecin" and retrieved this record only.</li>
+</ul>
+<div class="call w"><b class="hd">⚠ Independent check incomplete</b><p>A registry check as of 8 August 2026 could not be completed — the ClinicalTrials.gov API timed out on repeated attempts. The registry position above is current only to December 2025.</p></div>
+<p><strong>As of December 2025, thirty-two years after first description, BPC-157 had one registered trial, in Phase 1, with no posted results.</strong> That absence is the finding.</p>
+
+<h2>Human evidence — the complete set</h2>
+<table>
+  <thead><tr><th>Citation</th><th>Design</th><th>n</th><th>Route &amp; dose</th><th>Retrieval</th></tr></thead>
+  <tbody>
+    <tr><td>Ruenzi et al. 2005</td><td>RCT, double-blind, placebo-controlled — <strong>meeting abstract</strong></td><td>53 / 46 completed</td><td>80 mg rectal enema daily × 2 wk</td><td><span class="lfs">⚠ lfs</span></td></tr>
+    <tr><td>Veljaca et al. 2002</td><td>Phase 1 — abstract</td><td>24</td><td>≤2 mg/kg rectal enema × 8 d</td><td><span class="lfs">⚠ lfs</span></td></tr>
+    <tr><td>Veljaca et al. 2003</td><td>Phase 1 PK — abstract</td><td>—</td><td>rectal enema</td><td><span class="lfs">⚠ lfs</span></td></tr>
+    <tr><td>Lee &amp; Padgett 2021</td><td>Uncontrolled, <strong>with TB4</strong></td><td>17</td><td>2–4 mg intra-articular</td><td><span class="lfs">⚠ lfs</span></td></tr>
+    <tr><td>Lee et al. 2024</td><td>Uncontrolled</td><td>12</td><td>10 mg intravesical</td><td><span class="lfs">⚠ lfs</span></td></tr>
+    <tr><td>Lee &amp; Burgess 2025</td><td>Case pair</td><td>2</td><td>10 mg then 20 mg IV</td><td><span class="lfs">⚠ lfs</span></td></tr>
+  </tbody>
+</table>
+<p>Two statements of absence, both quotable:</p>
+<blockquote>"We did not identify any studies that administered BPC-157 via the oral, SC, nasal, or transdermal ROA in subjects with UC."</blockquote>
+<blockquote>"We found no human pharmacokinetic data for BPC-157 after oral, SC, nasal, or transdermal administration."</blockquote>
+<div class="call w"><p><strong>All six rows are ⚠ learned-from-summary.</strong> They were read in FDA's description of them, not opened. FDA is an unusually good summariser with no commercial stake, but the rule has no exception for trustworthy summarisers — that is the whole point of the field. <strong>None may be used in synthesis until upgraded.</strong> The Ruenzi numbers are the priority: they are the only controlled effect estimate in the record.</p></div>
+
+<h2>Preclinical basis</h2>
+<ul>
+  <li><strong>Colonic fistula, rats</strong> — 10 ng/kg or 10 µg/kg IP or oral; fistulas ~40% smaller from day 3, macroscopically resolved by day 28. No histopathology reported. Klicek et al. 2008.</li>
+  <li><strong>NSAID-induced GI lesions, rats</strong> — lesion size reduced &gt;75%. No microscopic analysis. Sikiric et al. 1997a.</li>
+  <li><strong>Hepatoprotection, rats</strong> — prevented necrosis and enzyme rise across bile-duct ligation, restraint stress and CCl₄. Sikiric 1993b; Ilic 2010, 2011.</li>
+  <li><strong>Pharmacokinetics</strong> — t½ 5.3 min (dog, 6 µg/kg IV), 15.2 min (rat, 20 µg/kg IV). He et al. 2022.</li>
+</ul>
+<div class="call"><p>Every one of these is <strong>prevention or co-treatment</strong>, not repair of established injury. FDA notes for each that it "remains unknown whether BPC-157, used as a post-treatment after [injury] has developed, would effectively reduce the severity." People buy it to fix an injury they already have. The rodent literature largely does not test that.</p></div>
+
+<h2>Safety signal</h2>
+<h4>Adverse-event reports — FAERS through 4 Dec 2025, three reports, all injectable</h4>
+<table>
+  <thead><tr><th>ID</th><th>Case</th><th>Assessment</th></tr></thead>
+  <tbody>
+    <tr><td><code>26053573</code></td><td>40F, BPC-157 + TB500 SC twice daily for "joint healing," product labelled <strong>"research purposes only."</strong> Diffuse hyperpigmentation and gingival darkening after one week; <strong>identical reproducible reaction on rechallenge</strong>; resolved on discontinuation</td><td>FDA: "likely due to the drug product considering that the AEs occurred upon rechallenge." Two peptides, so attribution between them is impossible. Structurally the closest report to how the catalogue's BPC-157/TB4 blends are sold</td></tr>
+    <tr><td><code>23130696</code></td><td>28M, BPC-157 acetate SC for "injury/inflammation." Shortness of breath → emergency room</td><td>Limited — no duration, concomitants or temporal detail</td></tr>
+    <tr><td><code>194222121</code></td><td>55F, nine days injection-site redness and swelling</td><td>Confounded by concomitant injectable thymosin</td></tr>
+  </tbody>
+</table>
+<p>Three further cases in the Human Foods Complaint System, all confounded by multi-ingredient supplements. No published case reports.</p>
+<h4>Nonclinical signals</h4>
+<p>28-day repeat-dose IM in rats and dogs produced <strong>altered clotting parameters</strong> — aPTT shortening in rats, prolongation in dogs — plus increased serum ALT, glucose and triglycerides (Xu et al. 2020). Not mutagenic across Ames, chromosome aberration and micronucleus assays.</p>
+<h4>Known unknowns</h4>
+<ul>
+  <li>No carcinogenicity studies exist.</li>
+  <li>No nonclinical toxicology or PK by <em>any</em> route the product is used by.</li>
+  <li>No immunogenicity study exists. FDA notes SC and nasal routes carry higher immunogenicity risk than oral or rectal, that aggregation is an immunogenicity risk factor, and that aggregation here has never been characterised.</li>
+  <li>Commercial certificates of analysis typically report purity only — so the injected material's impurity profile is unknown even when a COA is supplied.</li>
+</ul>
+<div class="call b"><b class="hd">Absence of reported harm is not a safety record</b><p>Total controlled human exposure across the entire literature is roughly 100 people, for a maximum of two weeks, mostly by a route nobody uses. FDA adds a structural caveat: 503A compounders generally do not report adverse events to the Agency at all, so the denominator is unknown and the numerator undercounted.</p></div>
+
+<h2>Unfavourable and counterbalancing findings</h2>
+<ul>
+  <li><strong>The only controlled trial was null</strong> — between-group DAI difference 1.6, 95% CI −4.84 to 1.62.</li>
+  <li><strong>It was never published in full.</strong> Twenty-one years on, still a meeting abstract.</li>
+  <li><strong>The single registered trial has no posted results</strong> and no traceable publication.</li>
+  <li><strong>Zero compounded BPC-157 products</strong> reported to FDA's outsourcing-facility database, Jan 2017 – Jun 2025.</li>
+  <li><strong>No dose-response in any rodent model.</strong></li>
+  <li><strong>No identified molecular target</strong> after thirty-three years.</li>
+  <li>Neither the ACG nor AGA ulcerative colitis guideline mentions it.</li>
+</ul>
+<div class="call"><b class="hd">Credit where due</b><p>The rodent work is not junk. Effects have been reported across multiple independent injury models, in several laboratories, over three decades. The genotoxicity battery is clean and reasonably complete. Acute toxicity is low — IM NOAELs of 20 mg/kg in rats and 10 mg/kg in dogs are high. Teratogenicity screening in rats was negative at 4 mg/kg. And a 15-amino-acid peptide with a five-minute half-life is, on priors, unlikely to do much harm systemically. <strong>The case against BPC-157 is an absence-of-evidence case about efficacy and exposure, not a demonstrated-harm case.</strong></p></div>
+
+<h2>Flags</h2>
+<h4><span class="flag">IDENTITY</span></h4>
+<p>The catalogue does not state whether it sells free base or acetate. FDA treats these as distinct bulk drug substances and warns that multiple salts and derivatives "including different active moieties" circulate under the single name. <strong>Both nominators to FDA got this wrong in their own paperwork</strong> — supplying acetate CoAs for a free-base nomination. Separately, the knee-pain study co-administered thymosin β4, so no effect in it is attributable to BPC-157.</p>
+<h4><span class="flag">ROUTE/DOSE</span></h4>
+<table>
+  <thead><tr><th>Gap</th><th>Magnitude</th></tr></thead>
+  <tbody>
+    <tr><td>Route</td><td>The only controlled human evidence is <strong>rectal enema</strong>. The product is a vial for injection. Rectal dosing produced <strong>no detectable plasma level</strong> — so the one route with controlled data is the one route shown not to achieve systemic exposure.</td></tr>
+    <tr><td>Dose vs. trial</td><td>Trial dose 80 mg per enema; vial contains 10 mg. <strong>~8× lower</strong>, by a different route.</td></tr>
+    <tr><td>Dose vs. rodent efficacy</td><td>Rodent effects at 10 ng/kg – 10 µg/kg scale to roughly <strong>0.7 µg – 0.7 mg</strong> for a 70 kg human. The vial contains 10 mg — <strong>~14× to ~14,000×</strong> the scaled rodent efficacious range. Stated as vial content against scaled animal dose; the vendor specifies no route or dose, so this is an upper bound on the gap, not a claim about what anyone administers.</td></tr>
+  </tbody>
+</table>
+<h4><span class="flag sel">SELECTION</span></h4>
+<p>The 25 nonclinical articles assessed by FDA were the list <strong>submitted by the nominators</strong> — parties with a commercial interest in the outcome. FDA supplemented with its own searches, which materially reduces the concern, but the corpus as originally assembled was curated by interested parties. A large share of it also originates with Sikirić and colleagues at Zagreb, who discovered the compound.</p>
+
+<h2>What a positive trial would need to show</h2>
+<p><strong>First, and this is the real gate — a Phase 1 PK study.</strong> Single- and multiple-ascending subcutaneous doses in 24–36 healthy volunteers with a validated LC-MS/MS plasma assay, establishing whether BPC-157 is detectable systemically after SC dosing at all, and at what C<sub>max</sub> and AUC. Without this, no efficacy trial can be dose-justified, because there is currently no basis for choosing a human dose other than guesswork. Cheap, fast, and not done in thirty-three years.</p>
+<p><strong>If exposure is demonstrated:</strong> chronic mid-portion Achilles tendinopathy, symptoms &gt;3 months, VISA-A entry criteria, randomised to BPC-157 SC vs. placebo, <strong>both arms on a standardised eccentric loading programme</strong> so the comparison is against real standard of care rather than nothing. Primary endpoint VISA-A change at 24 weeks, prespecified, MCID ~14 points. Given placebo-arm improvements of 8–11 points, detecting a 14-point incremental difference needs roughly <strong>200–260 participants</strong>. 24 weeks with 52-week follow-up.</p>
+<p>An entirely feasible trial — a few million dollars, no novel methodology, well-established endpoints. Its non-existence is a fact about commercial incentives, not scientific difficulty: an unpatentable peptide sold profitably without evidence has no sponsor with a reason to test it.</p>
+
+<h2>What would change this grade</h2>
+<h4>Upward</h4>
+<ul>
+  <li>Human PK demonstrating measurable systemic exposure by the subcutaneous route → removes the break at step 6.</li>
+  <li>Full peer-reviewed publication of Ruenzi 2005 with prespecification confirmed → could move the UC grade to L2, though the point estimate would still be null.</li>
+  <li>Any adequately powered RCT in a musculoskeletal indication → moves the marketed-use grade off L5 for the first time.</li>
+  <li>Identification of a molecular target with demonstrated dose-response → restores biological plausibility.</li>
+</ul>
+<h4>Downward</h4>
+<ul>
+  <li>Publication of a well-powered null trial.</li>
+  <li>Accumulating FAERS reports with consistent dechallenge/rechallenge patterns, particularly single-agent rather than blends.</li>
+  <li>Evidence that commercial material is systematically mis-identified between free base and acetate, or contaminated.</li>
+</ul>
+<h4>Would not change it</h4>
+<ul>
+  <li>More rodent injury models. There are dozens; the constraint is not preclinical volume.</li>
+  <li>The PCAC vote. An advisory recommendation is not evidence of effectiveness, FDA's own reviewers recommended against listing, and the vote is non-binding.</li>
+</ul>
+
+<div class="foot">
+  <p><strong>Not a purchasing guide.</strong> This record describes what has and has not been studied. Doses appear only as facts about what was studied or what is sold, for the route/dose mismatch check — never as instruction.</p>
+  <p>Protocol v1.0, frozen 8 August 2026. Primary source: FDA Briefing Document for BPC-157-Related Bulk Drug Substances, PCAC docket FDA-2025-N-6895, 11 May 2026.</p>
+</div>
+
+</main>
+</body>
+</html>

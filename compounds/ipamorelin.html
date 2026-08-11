@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ipamorelin — Evidence Record</title>
+<style>
+:root{
+  --bg:#faf9f7; --panel:#fff; --ink:#1a1a1a; --ink-2:#4a4a48; --ink-3:#78766f;
+  --line:#e3e0da; --line-2:#efece7;
+  --accent:#7a3b2e; --accent-soft:#f3ebe8;
+  --warn:#9a6a12; --warn-soft:#fdf4e3;
+  --bad:#8c2f2f; --bad-soft:#faecec;
+  --ok:#2f5f45; --ok-soft:#e9f2ec;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#16150f; --panel:#1e1d17; --ink:#eceae4; --ink-2:#bdbab2; --ink-3:#8d8a82;
+  --line:#332f26; --line-2:#282419; --accent:#d9856f; --accent-soft:#2a1e19;
+  --warn:#dfae5c; --warn-soft:#2b2213; --bad:#e08585; --bad-soft:#2d1a1a;
+  --ok:#7fbb98; --ok-soft:#16241c;}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+main{max-width:830px;margin:0 auto;padding:30px 26px 100px}
+h2{font-size:19px;margin:34px 0 8px;letter-spacing:-.015em;font-weight:660;padding-bottom:6px;border-bottom:1px solid var(--line)}
+h4{font-size:13px;margin:18px 0 6px;font-weight:680;color:var(--ink-2);text-transform:uppercase;letter-spacing:.05em}
+p{margin:0 0 12px;color:var(--ink-2)}
+strong{color:var(--ink);font-weight:640}
+ul,ol{margin:0 0 13px;padding-left:20px;color:var(--ink-2)} li{margin-bottom:5px}
+code{font-family:var(--mono);font-size:12px;background:var(--line-2);padding:1.5px 5px;border-radius:3px;color:var(--ink)}
+a{color:var(--accent)}
+table{width:100%;border-collapse:collapse;font-size:12.8px;margin:12px 0 16px}
+th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);padding:7px 9px;border-bottom:1.5px solid var(--line);font-weight:680;vertical-align:bottom}
+td{padding:8px 9px;border-bottom:1px solid var(--line-2);vertical-align:top;color:var(--ink-2)}
+tr:last-child td{border-bottom:none} td strong{color:var(--ink)}
+blockquote{margin:13px 0;padding:10px 16px;border-left:2px solid var(--line);font-family:var(--serif);font-size:14px;color:var(--ink-2);font-style:italic}
+.back{font-size:12px;color:var(--ink-3);text-decoration:none;display:inline-block;margin-bottom:16px}
+.back:hover{color:var(--accent)}
+.mast{border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:22px 24px;margin-bottom:8px}
+.mast h1{font-size:31px;margin:0 0 4px;letter-spacing:-.03em;font-weight:690}
+.mast .sold{font-size:13px;color:var(--ink-2);margin-bottom:3px}
+.mast .meta{font-size:11px;color:var(--ink-3);font-family:var(--mono)}
+.axes{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:18px 0 0}
+.ax{padding:11px 13px;border-radius:7px;border:1px solid var(--line);background:var(--bg)}
+.ax b{display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);margin-bottom:5px;font-weight:680}
+.chip{display:inline-block;font-size:11px;font-weight:680;padding:2.5px 8px;border-radius:4px;font-family:var(--mono)}
+.L1,.L2{background:var(--ok-soft);color:var(--ok)} .L4{background:var(--warn-soft);color:var(--warn)} .L5{background:var(--bad-soft);color:var(--bad)}
+.Mismatched{background:var(--bad-soft);color:var(--bad)} .Concentrated{background:var(--warn-soft);color:var(--warn)}
+.ax .note{display:block;font-size:11px;color:var(--ink-3);margin-top:4px;line-height:1.35}
+.flag{display:inline-block;font-size:10px;font-family:var(--mono);font-weight:680;padding:2px 6px;border-radius:4px;background:var(--bad-soft);color:var(--bad);margin-right:4px}
+.flag.sel{background:var(--warn-soft);color:var(--warn)}
+.call{border-left:3px solid var(--accent);background:var(--accent-soft);padding:13px 16px;border-radius:0 7px 7px 0;margin:16px 0;font-size:13.5px}
+.call.w{border-left-color:var(--warn);background:var(--warn-soft)}
+.call.b{border-left-color:var(--bad);background:var(--bad-soft)}
+.call.g{border-left-color:var(--ok);background:var(--ok-soft)}
+.call b.hd{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px;color:var(--accent);font-weight:700}
+.call.w b.hd{color:var(--warn)} .call.b b.hd{color:var(--bad)} .call.g b.hd{color:var(--ok)}
+.call p:last-child{margin-bottom:0}
+.prov{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin:9px 0 0;padding:7px 10px;background:var(--line-2);border-radius:5px;line-height:1.55}
+.lfs{color:var(--warn);font-weight:680} .ret{color:var(--ok);font-weight:680}
+.chain{list-style:none;padding:0;margin:12px 0;counter-reset:s}
+.chain li{counter-increment:s;position:relative;padding:8px 0 8px 38px;border-bottom:1px solid var(--line-2);font-size:13.3px}
+.chain li:last-child{border-bottom:none}
+.chain li::before{content:counter(s);position:absolute;left:0;top:8px;width:22px;height:22px;border-radius:50%;background:var(--line-2);color:var(--ink-3);font-size:10.5px;font-weight:680;display:flex;align-items:center;justify-content:center;font-family:var(--mono)}
+.chain li.hum::before{background:var(--ok-soft);color:var(--ok)}
+.chain li.ani::before{background:var(--warn-soft);color:var(--warn)}
+.chain li.no::before{background:var(--bad-soft);color:var(--bad)}
+.st{display:block;font-size:10.5px;font-weight:680;text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+.st.hum{color:var(--ok)} .st.ani{color:var(--warn)} .st.no{color:var(--bad)}
+.foot{border-top:1px solid var(--line);padding-top:15px;font-size:11px;color:var(--ink-3);margin-top:40px}
+@media(max-width:640px){.axes{grid-template-columns:1fr}main{padding:20px 16px 60px}}
+@media print{body{background:#fff}.back{display:none}}
+</style>
+</head>
+<body>
+<main>
+
+<a class="back" href="../peptide-evidence-brief.html">← Peptide Evidence Brief</a>
+
+<div class="mast">
+  <h1>Ipamorelin</h1>
+  <div class="sold"><strong>Sold as</strong> "Ipamorelin 10mg (10 vials/Kit)", $178/kit — lyophilised, route not stated, labelled research use only. Also a component of two blends: CJC-no DAC / Ipamorelin 5mg/5mg ($198) and Tesamorelin / Ipamorelin 10mg/3mg ($328).</div>
+  <div class="meta">Record 2026-08-09 · Protocol v1.0 · Never approved in any country</div>
+  <div class="axes">
+    <div class="ax"><b>Evidence Level</b><span class="chip L2">L2</span> <span class="chip L5">L5</span>
+      <span class="note">L2 for acute GH release — a dose-ranging human PK/PD study. L5 for every clinical outcome it is marketed for</span></div>
+    <div class="ax"><b>Indication Match</b><span class="chip Mismatched">Mismatched</span>
+      <span class="note">The only clinical endpoint ever tested in humans was not one it is sold for — and it did not reach significance</span></div>
+    <div class="ax"><b>Source Independence</b><span class="chip Concentrated">Concentrated</span>
+      <span class="note">Novo Nordisk discovery programme, then Helsinn. No independent clinical replication</span></div>
+  </div>
+  <div style="margin-top:12px"><span class="flag">ROUTE/DOSE</span></div>
+</div>
+
+<div class="call">
+  <b class="hd">Bottom line</b>
+  <p>Ipamorelin is the cleanest example in this catalogue of a compound whose <em>mechanism</em> is well demonstrated in humans and whose <em>benefit</em> is not. A proper dose-ranging study in forty healthy volunteers showed dose-proportional pharmacokinetics and a reliable, measurable growth hormone pulse. There is no doubt the drug does what it is supposed to do biochemically. Then a pharmaceutical company took it into a Phase 2 randomised placebo-controlled trial for post-operative ileus — <strong>the only clinical endpoint ipamorelin has ever been tested against in humans</strong> — where it produced a 7.3-hour median improvement in time to first tolerated meal that <strong>did not reach significance (25.3 vs 32.6 h, p=0.15)</strong> in 114 patients, with no significant differences on key or secondary analyses. It was not advanced. Everything it is actually sold for — sleep, recovery, lean mass, anti-aging — has never been tested at all. The Evidence Level axis is split because the two halves measure genuinely different things, and reporting a single number would hide the most informative fact in the record.</p>
+</div>
+
+<h2>What it is</h2>
+<p>A synthetic pentapeptide (Aib-His-D-2-Nal-D-Phe-Lys-NH₂), a growth hormone secretagogue acting as an agonist at the ghrelin receptor GHS-R1a. It stimulates pituitary GH release through a pathway distinct from GHRH — which is why it is commonly stacked with a GHRH analogue such as CJC-1295 or tesamorelin, on the theory that hitting two upstream mechanisms produces a larger pulse than either alone.</p>
+<p>Its distinguishing feature within its class is <strong>selectivity</strong>. Earlier growth hormone-releasing peptides raised cortisol, prolactin and ACTH alongside GH. Ipamorelin was developed to release GH with substantially less of that off-target endocrine activity, and that selectivity is a genuine and well-characterised pharmacological achievement.</p>
+<p><strong>Regulatory status: never approved anywhere, for anything.</strong> Discovered and developed by Novo Nordisk, later licensed to Helsinn Therapeutics, which took it into Phase 2 for post-operative ileus and then discontinued it. It has no INN-approved product, no monograph, and no marketing authorisation in any jurisdiction.</p>
+<div class="prov">source: Gobburu JV, Agersø H, Jusko WJ, Ynddal L. <em>Pharm Res</em> 1999;16(9):1412–6 · PMID 10496658 · DOI 10.1023/a:1018955126402 — <span class="ret">retrieved</span><br>source: Beck DE, Sweeney WB, McCarter MD; Ipamorelin 201 Study Group. <em>Int J Colorectal Dis</em> 2014;29(12):1527–34 · PMID 25331030 · DOI 10.1007/s00384-014-2030-8 · NCT00672074 — <span class="ret">retrieved</span></div>
+
+<h2>Theoretical pathway</h2>
+<ol class="chain">
+  <li class="hum">Binds and activates the ghrelin receptor GHS-R1a on pituitary somatotrophs<span class="st hum">demonstrated — mechanism characterised</span></li>
+  <li class="hum">Produces a measurable pulse of growth hormone release<span class="st hum">demonstrated in humans — peak at 0.67 h across five dose levels</span></li>
+  <li class="hum">Does so selectively, without meaningful cortisol or prolactin elevation<span class="st hum">demonstrated — the compound's defining property</span></li>
+  <li class="no">The GH pulse is sustained enough to raise IGF-1 meaningfully with repeated dosing<span class="st no">not established in any published human trial</span></li>
+  <li class="no">That signalling produces measurable change in body composition, sleep or recovery<span class="st no">never tested in humans — no trial of any design</span></li>
+  <li class="no">It produces clinical benefit on a hard endpoint<span class="st no">tested once, in post-operative ileus — did not reach significance (p=0.15) and did not advance</span></li>
+</ol>
+
+<div class="call b">
+  <b class="hd">⚠ Where the chain breaks — step 4 onward, and step 6 is the informative one</b>
+  <p>The break here is not exposure. Pharmacokinetics are clean and dose-proportional: half-life about two hours, clearance 0.078 L/h/kg, volume of distribution 0.22 L/kg. The molecule gets where it needs to go and does what it does. That puts ipamorelin ahead of most of this catalogue.</p>
+  <p><strong>The break is the shape of the signal.</strong> What the human study showed was <em>a single episode of GH release with a peak at 0.67 hours and an exponential decline to negligible concentrations at all doses.</em> That is a transient spike lasting a couple of hours, not the sustained elevation that drives IGF-1 and, through it, tissue effects. Whether repeated transient pulses accumulate into anything that changes body composition is an entirely open question — and it is the question everyone buying this compound is implicitly betting on.</p>
+  <p><strong>And step 6 is where this record earns its keep.</strong> Most compounds here fail because nobody ever ran the trial. Ipamorelin is different: a pharmaceutical company <em>did</em> run a randomised placebo-controlled trial on a clinical endpoint. The result deserves precision rather than a verdict. Median time to first tolerated meal was <strong>25.3 hours on ipamorelin versus 32.6 hours on placebo — a 7.3-hour numerical advantage that did not reach significance at p=0.15</strong> in 114 patients. The authors' own conclusion is that there were "no significant differences between ipamorelin and placebo in the key and secondary efficacy analyses," and they name the study small with a broad range of underlying conditions.</p>
+  <p>So this is not a clean demonstration that the drug does nothing. It is an underpowered proof-of-concept that saw a plausible-looking signal, could not establish it, and was not followed up. Which is its own kind of informative: the sponsor held the data, and chose not to run the larger trial that would have settled it.</p>
+</div>
+
+<h2>Claimed vs. supported indications</h2>
+<table>
+  <thead><tr><th>Ailment</th><th>Marketed claim</th><th>Evidence that exists</th><th>Level</th><th>Natural history untreated</th><th>Nearest approved option</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Lean mass / body recomposition</strong></td><td>The dominant market use; sold in GH-axis stacks explicitly for this</td><td><strong>None.</strong> No human trial of any design has measured body composition on ipamorelin</td><td><span class="chip L5">L5</span></td><td>Body composition responds strongly and reliably to resistance training, protein intake and sleep. Anyone adding a peptide is almost always also changing training or diet, which makes attribution to the peptide close to impossible without a control arm</td><td>None approved for healthy adults. Recombinant GH (somatropin) is approved only for diagnosed GH deficiency</td></tr>
+    <tr><td>Sleep quality</td><td>Widely claimed — "deeper sleep", tied to GH's nocturnal secretion pattern</td><td><strong>None.</strong> No polysomnography, no sleep-diary trial, no human study of any design</td><td><span class="chip L5">L5</span></td><td>Subjective sleep quality has very high night-to-night variance and one of the largest placebo responses in medicine. Expectancy alone reliably shifts self-reported sleep</td><td>CBT-I is first-line and outperforms pharmacotherapy long-term. Approved hypnotics where indicated</td></tr>
+    <tr><td>Recovery from training or injury</td><td>Standard positioning, often stacked with BPC-157 or CJC-1295</td><td><strong>None</strong> in humans</td><td><span class="chip L5">L5</span></td><td>Soreness and training fatigue resolve on their own over days; perceived recovery tracks sleep and nutrition more than anything else</td><td>Sleep, protein, load management. No approved pharmacotherapy</td></tr>
+    <tr><td>Anti-aging / GH restoration</td><td>"Restore youthful GH levels"</td><td><strong>None.</strong> No aging endpoint has ever been studied</td><td><span class="chip L5">L5</span></td><td>GH secretion declines with age in everyone; whether that is a driver of aging or an adaptation to it remains unsettled</td><td>None. GH use for aging is specifically discouraged by endocrine guidance</td></tr>
+    <tr><td><em>Post-operative ileus</em></td><td>Not marketed for this — included because it is the only clinical endpoint ever tested</td><td><strong>Phase 2 RCT, multicentre, double-blind, placebo-controlled, n=114 mITT (NCT00672074; Beck 2014).</strong> 0.03 mg/kg IV twice daily, post-op day 1–7. Median time to first tolerated meal <strong>25.3 h vs 32.6 h placebo, p=0.15</strong>. No significant differences on key or secondary endpoints. Not advanced</td><td><span class="chip L2">L2</span> <strong>null</strong></td><td><strong>Resolves spontaneously in a few days in most patients</strong> — placebo median was 32.6 h. A short, self-limiting course leaves little room for a drug effect to separate, which is a design problem as much as a drug problem and is stated rather than used to explain the result away</td><td>Alvimopan; enhanced recovery after surgery (ERAS) protocols, chewing gum, early mobilisation</td></tr>
+  </tbody>
+</table>
+
+<h2>Expected utility — reasoned, not scored</h2>
+<p>Set the prior from the components, and note that they point the same direction for once.</p>
+<p>The evidence level for every marketed use is L5 — not "weak human data" but <em>no human data</em>. The mechanistic chain is demonstrated for two steps and then stops, and the step it stops at is precisely the one that matters: whether a two-hour GH spike, repeated, changes anything about a body. The conditions people take it for — sleep quality, perceived recovery, gradual body-composition change — are among the most placebo-responsive and most confounded outcomes there are, judged over exactly the weeks-to-months window in which training and diet changes made at the same time will produce visible results regardless. And the approved comparator for the underlying mechanism, recombinant GH, is restricted to diagnosed deficiency precisely because the risk-benefit in healthy adults is unfavourable.</p>
+<p>Then there is the one hard datum: when a sponsor with money and regulatory intent tested whether ipamorelin's GH pulse produced a clinical result, it did not. That trial was in a different indication, and it would be wrong to treat a failed ileus trial as direct evidence against body-composition effects. But it is the only time anyone has closed the loop from mechanism to outcome with this molecule, and the loop did not close.</p>
+<div class="call w"><b class="hd">Dominant uncertainty</b>
+  <p><strong>Whether intermittent GH pulses do anything that sustained GH elevation does.</strong> This is a real and unresolved physiological question, not a rhetorical one — pulsatility genuinely matters in endocrinology, and there is a coherent argument that pulsatile secretagogue dosing is more physiological than exogenous GH. Nobody has run the study that would settle it for this compound: repeated dosing, IGF-1 as a pharmacodynamic readout, body composition by DXA. It would not be expensive. It has not been done in the twenty-seven years since the human PK study.</p></div>
+
+<h2>Registry record</h2>
+<ul>
+  <li><code>NCT00672074</code> — Phase 2 proof-of-concept, multicentre, double-blind, placebo-controlled, in adults undergoing small and large bowel resection by open or laparoscopic surgery. Conducted by the <strong>Ipamorelin 201 Study Group</strong>; Helsinn-sponsored. 117 enrolled, 114 in the safety and modified intent-to-treat populations. <strong>Published in full</strong> as Beck et al. 2014.</li>
+</ul>
+<p><strong>No registered trial exists for any indication ipamorelin is marketed for.</strong> Not body composition, not sleep, not recovery, not aging. As of this record date, that absence is total.</p>
+<div class="call g"><b class="hd">Registry claim upgraded</b><p>The trial record itself could not be read — ClinicalTrials.gov returns an empty body to this fetcher on both the v2 and legacy endpoints, and study pages are client-rendered. But the trial was <strong>published in a peer-reviewed journal</strong>, and that publication has been retrieved in full. A published paper is a better source than a registry entry, so this claim is now <span class="ret">retrieved</span> rather than pending.</p></div>
+
+<h2>Human evidence</h2>
+<table>
+  <thead><tr><th>Citation</th><th>Design</th><th>n</th><th>Route &amp; dose</th><th>Retrieval</th></tr></thead>
+  <tbody>
+    <tr><td>Gobburu JV, Agersø H, Jusko WJ, Ynddal L. <em>Pharm Res</em> 1999;16(9):1412–6<br>PMID 10496658</td><td>Phase 1 dose-escalation, PK/PD modelling</td><td>40 healthy men (8 per dose level)</td><td>15-min <strong>IV infusion</strong>; 4.21, 14.02, 42.13, 84.27, 140.45 nmol/kg</td><td><span class="ret">retrieved</span></td></tr>
+    <tr><td>Beck DE, Sweeney WB, McCarter MD; Ipamorelin 201 Study Group. <em>Int J Colorectal Dis</em> 2014;29(12):1527–34<br>PMID 25331030 · NCT00672074</td><td>Phase 2 proof-of-concept RCT, multicentre, double-blind, placebo-controlled — post-operative ileus</td><td>117 enrolled · 114 safety and mITT</td><td><strong>0.03 mg/kg IV twice daily</strong>, post-op day 1–7 or discharge</td><td><span class="ret">retrieved</span></td></tr>
+  </tbody>
+</table>
+<h4>Beck 2014 — the only clinical efficacy data that exist</h4>
+<table>
+  <thead><tr><th>Endpoint</th><th>Ipamorelin</th><th>Placebo</th><th>Result</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Median time to first tolerated solid meal</strong> (key efficacy endpoint)</td><td>25.3 h</td><td>32.6 h</td><td><strong>p = 0.15 — not significant</strong></td></tr>
+    <tr><td>Any treatment-emergent adverse event</td><td>87.5%</td><td>94.8%</td><td>Fewer on drug than placebo</td></tr>
+    <tr><td>Key and secondary efficacy analyses</td><td colspan="2">—</td><td>"No significant differences"</td></tr>
+  </tbody>
+</table>
+<p>The authors name the study's limitations themselves: "This proof of concept study was small and enrolled patients with a broad range of underlying conditions." A 7.3-hour median difference that misses significance at n=114 is an underpowered result, not a demonstrated absence of effect — and the distinction matters for how much weight this trial can carry.</p>
+<h4>Human PK/PD findings, Gobburu 1999</h4>
+<table>
+  <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
+  <tbody>
+    <tr><td>Pharmacokinetics</td><td>Dose-proportional across a ~33-fold dose range</td></tr>
+    <tr><td>Terminal half-life</td><td>~2 hours</td></tr>
+    <tr><td>Clearance</td><td>0.078 L/h/kg</td></tr>
+    <tr><td>Volume of distribution (steady state)</td><td>0.22 L/kg</td></tr>
+    <tr><td>GH response</td><td>Single episode of release, <strong>peak at 0.67 h</strong>, exponential decline to negligible concentrations at all doses</td></tr>
+    <tr><td>SC<sub>50</sub> (half-maximal GH stimulation)</td><td>214 nmol/L</td></tr>
+    <tr><td>Maximal GH production rate</td><td>694 mIU/L/h</td></tr>
+    <tr><td>Variability</td><td><strong>Inter-individual variability of the PD parameters was larger than that of the PK parameters</strong> — the drug's disposition is consistent between people; the GH response to it is not</td></tr>
+  </tbody>
+</table>
+<div class="call w"><b class="hd">Correction, 9 Aug 2026</b>
+  <p>An earlier version of this record stated that Gobburu 1999 reported no serious adverse events and no discontinuations. <strong>That claim does not appear in the paper's abstract and has been removed.</strong> It came from a secondary description, which is exactly the failure mode the retrieval field exists to catch — and it survived into a published record because the source had not been opened. It has been struck rather than re-sourced.</p>
+  <p>The remaining safety statements in this record now come from Beck 2014, which does report adverse-event data.</p></div>
+
+<h2>Preclinical basis</h2>
+<p>Brief, and only what carries the pathway. Ipamorelin's GH-releasing activity and its selectivity over cortisol and prolactin were established in rodent and in vitro work during the Novo Nordisk discovery programme.</p>
+<p>The gastrointestinal rationale that justified the Phase 2 trial is documented and retrievable:</p>
+<ul>
+  <li><strong>Greenwood-Van Meerveld B, Tyler K, Mohammadi E, Pietra C.</strong> "Efficacy of ipamorelin, a ghrelin mimetic, on gastric dysmotility in a rodent model of postoperative ileus." <em>J Exp Pharmacol</em> 2012;4:149–55. PMID 27186127 · PMCID PMC4863553 — <span class="ret">retrieved</span>. Rats subjected to laparotomy and intestinal manipulation retained 78% ± 5% of a test meal at 15 minutes; ipamorelin 0.014 µmol/kg IV reduced this to 52% ± 11% (P&lt;0.05), approaching non-surgical controls at 44% ± 6%. Isolated gastric smooth muscle showed reversal of surgery-induced contractile inhibition.</li>
+</ul>
+<div class="call"><b class="hd">The translation gap, now sourced on both sides</b>
+  <p>The rodent result was clean, dose-responsive and mechanistically coherent — gastric emptying accelerated toward normal, with a plausible cholinergic mechanism. It was published in 2012 with a <strong>Helsinn Healthcare author on the paper</strong>, and the Helsinn-sponsored Phase 2 in humans read out at p=0.15 two years later.</p>
+  <p>That sequence — convincing rodent efficacy, then a human trial that could not establish the effect — is worth holding onto when weighing the preclinical rationale behind ipamorelin's body-composition claims. Those rest on the same kind of inference, and unlike the GI claim, they have never been carried into a human trial at all.</p></div>
+
+<h2>Safety signal</h2>
+<p>Kept separate from efficacy.</p>
+<h4>What is actually known</h4>
+<ul>
+  <li><strong>Phase 2, n=114 (Beck 2014):</strong> treatment-emergent adverse events occurred in <strong>87.5% on ipamorelin versus 94.8% on placebo</strong> — fewer on drug than on placebo, in a post-surgical population where near-universal AE rates are expected. The authors conclude ipamorelin 0.03 mg/kg twice daily for up to seven days "was well tolerated."</li>
+  <li><strong>Phase 1, n=40 (Gobburu 1999):</strong> single IV doses across a 33-fold range. <em>The abstract reports no safety findings</em> — an earlier version of this record wrongly attributed a clean safety statement to it. See the correction above.</li>
+  <li><strong>Selectivity</strong> over cortisol and prolactin release, established preclinically, is a genuine advantage within the growth hormone-releasing peptide class.</li>
+</ul>
+<h4>Known unknowns — and they dominate</h4>
+<ul>
+  <li><strong>No long-term human exposure data of any kind.</strong> Total controlled exposure is one single-dose Phase 1 study and one short peri-operative trial. People use this compound for months or years.</li>
+  <li><strong>No repeated-dose IGF-1 data.</strong> Sustained IGF-1 elevation is the mechanism behind the neoplasm warnings and monitoring requirements on approved GH-axis drugs. Whether ipamorelin raises IGF-1 chronically is unpublished — which means the risk is unquantified in both directions.</li>
+  <li><strong>No subcutaneous data at all.</strong> <em>Both</em> human studies — the 1999 Phase 1 and the 2014 Phase 2 — used the <strong>intravenous</strong> route. There is no published pharmacokinetic or safety data for the subcutaneous route by which every buyer uses this compound.</li>
+  <li><strong>No interaction studies</strong>, which matters because two of the three catalogue products containing ipamorelin are blends with a second GH-axis agent — precisely the combination most likely to produce sustained rather than pulsatile elevation.</li>
+  <li>Ghrelin receptor agonism increases appetite as a class effect.</li>
+</ul>
+<div class="call b"><b class="hd">Absence of reported harm is not a safety record</b>
+  <p>Ipamorelin's clean safety showing comes from roughly forty healthy men given a single intravenous dose, plus one short surgical trial. That is a real but very thin base, and it says nothing about months of subcutaneous self-administration, and nothing at all about the stacked combinations sold here. A compound that was never approved never accumulated post-marketing surveillance either. The honest statement is that ipamorelin has no known serious harms and also no dataset in which serious harms could have been detected.</p></div>
+
+<h2>Unfavourable and counterbalancing findings</h2>
+<ul>
+  <li><strong>The one clinical trial ever conducted did not establish efficacy.</strong> Median time to first tolerated meal 25.3 h vs 32.6 h placebo, <strong>p=0.15</strong>; no significant differences on key or secondary endpoints (Beck 2014).</li>
+  <li><strong>It was not advanced</strong> despite a 7.3-hour numerical advantage — a sponsor holding a promising-looking underpowered signal chose not to fund the confirmatory trial. That decision is itself evidence about how the sponsor read the data.</li>
+  <li><strong>It never reached Phase 3</strong>, in twenty-seven years, under two pharmaceutical owners.</li>
+  <li><strong>Zero registered trials in any marketed indication.</strong> Not one.</li>
+  <li><strong>The GH signal is transient</strong> — a peak at 40 minutes decaying to negligible — which is a materially different thing from the sustained elevation that drives tissue effects.</li>
+  <li><strong>Never approved in any jurisdiction</strong>, so there is no regulatory review of its risk-benefit anywhere.</li>
+  <li><strong>Human data are intravenous.</strong> The route everyone uses has no published pharmacokinetics.</li>
+</ul>
+<div class="call g"><b class="hd">Credit where due</b>
+  <p>Ipamorelin is a well-made molecule and should not be lumped in with compounds that have nothing behind them. The selectivity is a real pharmacological achievement — releasing GH without dragging cortisol and prolactin along was the specific problem earlier secretagogues had, and this compound solved it. The human PK is clean, dose-proportional and properly characterised across five dose levels, which is more than almost anything else in this catalogue can claim. It was discovered at a major pharmaceutical company and taken into controlled trials by another. Nothing about it looks like a bad actor.</p>
+  <p>And the negative Phase 2 deserves credit of a different kind: the compound was <em>tested</em>, honestly, against placebo, on a clinical endpoint. Most of this catalogue has never been subjected to that risk at all. Ipamorelin took the test and did not pass it — which is a far more useful thing to know than never having taken it.</p></div>
+
+<h2>Flags</h2>
+<h4><span class="flag">ROUTE/DOSE</span></h4>
+<table>
+  <thead><tr><th>Gap</th><th>Magnitude</th></tr></thead>
+  <tbody>
+    <tr><td>Route</td><td><strong>Both</strong> published human studies used the <strong>intravenous</strong> route — a 15-minute infusion in Phase 1, twice-daily IV infusions in Phase 2. The product is used <strong>subcutaneously</strong>. No published subcutaneous PK exists, so bioavailability, C<sub>max</sub> and the resulting GH pulse shape by the actual route are unknown.</td></tr>
+    <tr><td>Dose — Phase 1</td><td>4.21–140.45 <strong>nmol/kg</strong>. At ~711 g/mol, that is roughly <strong>0.21 mg to 7.0 mg</strong> per dose for a 70 kg adult.</td></tr>
+    <tr><td>Dose — Phase 2</td><td><strong>0.03 mg/kg twice daily</strong> — about <strong>2.1 mg per dose, 4.2 mg/day</strong> for a 70 kg adult, intravenously.</td></tr>
+    <tr><td>Vial content vs studied doses</td><td>A <strong>10 mg</strong> vial exceeds the highest single dose ever given in a published human study (~7 mg IV) and is roughly <strong>2.4× the total daily dose</strong> used in the Phase 2 trial — by a different route, which makes the comparison indicative rather than exact.</td></tr>
+    <tr><td>Duration</td><td>Longest published human exposure is <strong>seven days</strong> (Beck 2014). Marketed use is daily, for months.</td></tr>
+    <tr><td>Combination</td><td>Two of three catalogue products are blends with a GHRH analogue (CJC-1295 or tesamorelin). No human study has examined ipamorelin in combination with anything.</td></tr>
+  </tbody>
+</table>
+<h4>No SELECTION flag</h4>
+<p>There is no curated reference list to be suspicious of here, because there is almost no literature to curate. The evidence base is two sponsor studies, one of which was negative and is reported as such.</p>
+<h4>No IDENTITY flag</h4>
+<p>Ipamorelin has a defined pentapeptide sequence and a settled name, and the vendor names it directly. Identity is not in question — though as with everything in this catalogue, purity, fill accuracy and endotoxin control of the vial are unverified.</p>
+
+<h2>What a positive trial would need to show</h2>
+<p>Two studies, in order, and neither is expensive.</p>
+<p><strong>First, the bridging study that does not exist.</strong> Repeated subcutaneous dosing in 24–36 healthy adults for 4–6 weeks, with serial IGF-1 as the primary pharmacodynamic endpoint and subcutaneous PK characterised properly. This answers the actual question the whole marketed rationale depends on: does repeated pulsatile GH release raise IGF-1 in a sustained way, or does it not? If IGF-1 does not move, the body-composition claims have no mechanism left and no efficacy trial is warranted. This study is small, quick, and has been available to run since 1999.</p>
+<p><strong>Then, if IGF-1 moves:</strong> randomised, double-blind, placebo-controlled, parallel-group in healthy resistance-training adults. Both arms on a <strong>standardised, supervised training and nutrition programme</strong> — non-negotiable, because unsupervised training is the confounder that makes every anecdote in this space uninterpretable. Primary endpoint DXA-measured lean mass change at 16 weeks, prespecified. Secondary: fat mass, IGF-1, and polysomnography-measured sleep architecture if the sleep claim is to be tested rather than assumed. Roughly <strong>60–80 per arm</strong> for a meaningful lean-mass difference against a training-controlled background.</p>
+<p>The reason neither has been run is not cost or difficulty. It is that ipamorelin is unpatentable, already sells well without evidence, and its last owner walked away after the one trial that was run came back negative.</p>
+
+<h2>What would change this grade</h2>
+<h4>Upward</h4>
+<ul>
+  <li><strong>Repeated-dose subcutaneous data showing sustained IGF-1 elevation</strong> → repairs step 4 and is the single highest-value study available.</li>
+  <li>Any RCT with a body-composition, sleep or recovery endpoint → moves the marketed-use grade off L5 for the first time.</li>
+  <li>An adequately powered repeat of the ileus trial. Beck 2014 saw a 7.3-hour advantage at p=0.15 in 114 patients; a trial sized to detect that difference would settle whether the signal was real, and would be the cheapest way to learn whether ipamorelin's GH pulse produces <em>any</em> clinical effect.</li>
+  <li>Independent replication of the GH-release finding outside the original sponsor programme.</li>
+</ul>
+<h4>Downward</h4>
+<ul>
+  <li>A repeated-dose study showing IGF-1 does <em>not</em> rise → would collapse the mechanistic rationale entirely and make the marketed claims unsupportable rather than merely unsupported.</li>
+  <li>Adverse-event reports emerging from stacked GH-axis use.</li>
+</ul>
+<h4>Would not change it</h4>
+<ul>
+  <li>More acute GH-release demonstrations. That step is established; it has been established since 1999; repeating it does not address the gap.</li>
+  <li>Preclinical body-composition work. The compound has already demonstrated one documented preclinical-to-clinical translation failure, which lowers rather than raises the weight preclinical rationale should carry here.</li>
+  <li>The compound's selectivity profile, offered as evidence of efficacy. Selectivity is a safety and cleanliness property. It says nothing about whether the drug works.</li>
+</ul>
+
+<div class="foot">
+  <p><strong>Not a purchasing guide.</strong> This record describes what has and has not been studied. Doses appear only as facts about what was studied or what is sold, for the route/dose mismatch check — never as instruction.</p>
+  <p>Protocol v1.0. Record upgraded 9 Aug 2026 — all three primary sources retrieved via NCBI E-utilities after direct PubMed and ClinicalTrials.gov fetches were blocked.</p>
+  <p><strong>Sources, all <span class="ret">retrieved</span>:</strong> Gobburu JV, Agersø H, Jusko WJ, Ynddal L. <em>Pharm Res</em> 1999;16(9):1412–6, PMID 10496658 · Beck DE, Sweeney WB, McCarter MD; Ipamorelin 201 Study Group. <em>Int J Colorectal Dis</em> 2014;29(12):1527–34, PMID 25331030, NCT00672074 · Greenwood-Van Meerveld B, Tyler K, Mohammadi E, Pietra C. <em>J Exp Pharmacol</em> 2012;4:149–55, PMID 27186127.</p>
+</div>
+
+</main>
+</body>
+</html>
