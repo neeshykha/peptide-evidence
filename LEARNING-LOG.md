@@ -43,3 +43,30 @@ Paste a help-center article (HTML or plain text) → AI-readiness grade across 5
 **Learned (environment):** scheduled Ship Sunday runs can *author and verify* (Playwright + bundled Chromium works headlessly for smoke tests) but cannot deploy or retrieve web pages. Increment types that fit scheduled runs: specs, static apps, client-side code, repo-clone work. Peptide record batches and Pages/Vercel config need attended sessions.
 
 **Next increment:** (a) Aneesh publishes: the hub bundle (from 8-16) and kb-health-checker (from today) — ~4 minutes total; (b) next attended session: reconcile this rubric with `specs/kb-health-checker-spec.md` from the hub bundle, then start KB checker v2 (Vercel serverless URL mode) or a peptide record batch; (c) next scheduled run: MQD calculator scaffold is the best static-first candidate if v2 needs attended time.
+
+---
+
+## Entry #4 — 2026-09-13
+
+**Shipped:** **MQD Runway** (queue #3) — Delta Medallion status calculator, built and deploy-ready as a pure client-side single file.
+Deliverables staged: `mqd-calculator/index.html` + `README.md`. Target: new repo `neeshykha/mqd-calculator` → GitHub Pages.
+
+Enter current MQDs, planned Delta flight spend, and Delta Amex cards (Boost + Headstart) → projected year-end MQDs on a runway meter with all four tier markers, per-tier gap analysis ("close it with $X fare or $Y Reserve spend"), and a mileage-run calculator (MQD yield, cost-per-MQD, does-it-close-the-gap verdict). Inputs persist in localStorage so it works as a season-long tracker. Verified in headless Chromium: 16/16 checks (math, rule edits, persistence, 400px viewport, zero console errors).
+
+**Key design decision — rules as data, not code.** The queue note said this project "needs attended web access" to verify current MQD rules. The unblock: every program number (thresholds, Boost rates, Headstart) lives in an editable, dated rules panel that all calculations read from. WebSearch (titles only) confirmed 2027 thresholds unchanged from 2026, which de-risked the Sept-2026 snapshot; and if anything changes, users fix it in the UI in seconds. Same lesson-shape as KB checker v1: **re-scope the increment so the blocked dependency stops being a dependency.** A loyalty calculator that hardcodes rules dies at the next program change anyway — the constraint forced the better design.
+
+**Environment re-check:** push from scheduled runs still 403 (tested per the 8-23 note). kb-health-checker confirmed published (repo exists, main branch). Portfolio hub repo still not created as of today — bundle from 8-16 is four weeks unpublished.
+
+**Next increment:** (a) Aneesh publishes: mqd-calculator (~2 min) and, still pending, the hub bundle from 8-16; (b) next attended session: KB checker v2 (Vercel URL mode) or a peptide record batch; (c) next scheduled run: HVAC export cleaner (queue #5) is the static-first candidate — the cleaning rules are already encoded in the hvac-csv-cleaner skill, so it's a pure port job.
+
+---
+
+## Entry #5 — 2026-09-14
+
+**Shipped:** the **Ship Sunday → Claude Code migration kit** — skill, headless run prompt, idempotent `publish.sh` (gh repo create → push → Pages API → About), first-run backlog checklist, and the MQD Runway deploy files bundled in.
+
+**Decision (Aneesh's call):** move the whole weekly routine to Claude Code. Rationale: every cloud run ended in "files + manual upload steps" because the sandbox couldn't push or create repos; Claude Code with `gh` closes the last mile, and its full web access also unblocks the parked retrieval work (peptide batches, KB checker v2). The continuity design transfers unchanged — state files in git are environment-agnostic by construction, which is what made this migration a file-copy instead of a rewrite.
+
+**Learned:** when an automation's environment can't reach the finish line, the fix isn't better handoff instructions — it's moving the automation to where the credentials live. Three runs of polished manual publish steps still produced a four-week-unpublished hub; one authenticated `gh repo create` beats all of it.
+
+**Next:** first Claude Code run clears the backlog (publish mqd-calculator, hub, state files — see kit `first-run.md`), then turn off the Cowork scheduled task. Queue after that: KB checker v2 or first peptide record batch, both now unblocked in any run.

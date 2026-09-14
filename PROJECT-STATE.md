@@ -11,7 +11,7 @@ Aneesh has 17+ production AI automations but nothing public. Every unit of work 
 1. Web-first for portfolio pieces. No installs, no Mac apps for public work.
 2. 3:1 public-to-personal project ratio.
 3. Static-first, backend only when genuinely needed (and then it's a portfolio story).
-4. Every session ends with something deployed or deployable.
+4. Every session ends with something deployed — live and verified, not just deployable.
 5. Append to LEARNING-LOG.md every session: date, shipped, learned, next.
 6. Metric that matters: live URLs, not sessions held.
 
@@ -23,22 +23,22 @@ Work-side: tool building, MCPs, web tools useful in IoT or similar environments 
 
 | # | Project | Status | Notes |
 |---|---------|--------|-------|
-| 0 | portfolio hub | **AWAITING ANEESH'S PUBLISH** (bundle delivered 2026-08-16) | Repo `neeshykha/portfolio` with landing page, README, state files, kb-checker spec. Until published, scheduled runs read state from peptide-evidence. Do NOT rebuild the bundle. |
-| 1 | peptide-evidence | **LIVE** — https://neeshykha.github.io/peptide-evidence/ | 4/43 records published. Record batches need attended sessions (source retrieval). |
-| 2 | KB health checker | **LIVE 2026-08-23** — https://neeshykha.github.io/kb-health-checker/ (flagship) | v1 paste-mode, pure client-side. Repo `neeshykha/kb-health-checker`, Pages on main/root, About metadata set. Verified live in-browser: "Load bad example" → 45/F. v2 = URL-fetch mode on Vercel + serverless (CORS) in attended sessions; reconcile rubric with `specs/kb-health-checker-spec.md` from hub bundle. |
-| 3 | MQD calculator | Queued — next static-first candidate for a scheduled run | Pure client-side. Verify current Delta MQD earn rules + Medallion thresholds at build time (needs attended web access). Audience play: r/delta, FlyerTalk. |
-| 4 | HVAC export cleaner | Backlog (personal slot) | Drag-drop CSV cleaner, port of existing Python rules to browser JS. |
+| 0 | portfolio hub | **OVERDUE — publish on first Claude Code run** (bundle from 2026-08-16 never published) | Repo `neeshykha/portfolio`: landing page, README, state files, kb-checker spec. If the original bundle can't be found locally, rebuilding is authorized (the old do-not-rebuild rule only existed because cloud runs couldn't deploy). Once live, **state files move here.** |
+| 1 | peptide-evidence | **LIVE** — https://neeshykha.github.io/peptide-evidence/ | 4/43 records published. Record batches now unblocked (Claude Code has full web access). |
+| 2 | KB health checker | **LIVE 2026-08-23** — https://neeshykha.github.io/kb-health-checker/ (flagship) | v1 paste-mode, pure client-side. v2 = URL-fetch mode on Vercel + serverless (CORS); reconcile rubric with `specs/kb-health-checker-spec.md` from hub bundle. |
+| 3 | MQD calculator ("MQD Runway") | **BUILT + VERIFIED 2026-09-13 — publish on first Claude Code run** | In kit `deploy/mqd-calculator/`. Target repo `neeshykha/mqd-calculator` → Pages main/root. Rules encoded as editable data (Sept 2026 snapshot: 5k/10k/15k/28k thresholds, unchanged for 2027 per Dec-2025 Delta announcement; Headstart $2,500/card; Boost $10 Reserve / $20 Platinum). 16/16 headless-Chromium checks passed. Audience play once live: r/delta, FlyerTalk. |
+| 4 | KB checker v2 (URL mode) | Queued | Vercel + serverless — now feasible in any Claude Code run. |
+| 5 | HVAC export cleaner | Backlog (personal slot) | Drag-drop CSV cleaner, port of existing Python rules to browser JS. Rules already encoded in the `hvac-csv-cleaner` skill. |
 
 ## Environment facts (save future sessions the discovery cost)
 
+- **MIGRATION (2026-09-14): Ship Sunday moved from Cowork cloud scheduled runs to Claude Code** (Aneesh's Mac or headless worker node), via the ship-sunday migration kit. Claude Code runs have: full git push, `gh` CLI (repo creation, Pages config via API — see kit `bin/publish.sh`), full web access, and the local ShipSunday folder. The Cowork-era constraints below are kept only for context if a run ever happens in Cowork again.
 - GitHub account: **neeshykha** (also has: claude-resume-pipeline, claude-memory, deflection-audit).
-- Cowork cloud sandbox GitHub proxy is **repo-scoped**: authenticated as neeshykha but cannot create repos or push to repos not attached to the session. `add_repo` is not available in Cowork.
-- Working path: Claude-in-Chrome browser automation (user is logged into GitHub) for repo creation, file uploads (`/upload/main/<dir>` URLs), and settings. Files must be staged in the session outputs folder (`/mnt/user-data/outputs/...`) for the extension's file_upload to accept them.
-- Peptide dataset source of truth: the **ShipSunday project folder** on Aneesh's Mac — as of 2026-08-23, `~/Documents/ShipSunday/`, connected as a Cowork folder root. It also holds the state files and `kb-health-checker/`. **Attended sessions only** — scheduled runs have no device bridge, so this path is inert to them. **Do not assume the literal path**: list the connected folders and locate `peptide-evidence-dataset/` by name. It moved twice on 2026-08-23 (`~/Downloads/` → `~/Downloads/ShipSunday/` → `~/Documents/ShipSunday/`), so the folder name is the durable handle, not the path. Publish only index + compounds/ — `working/` stays private. Scrub vendor names (index carried nexaph.com references; neutralized in the published copy).
-- GitHub Pages: enabled, deploy-from-branch, main / root.
-- **Scheduled (Ship Sunday) runs specifically:** no WebFetch (permission-gated — every URL returns PROVENANCE_REQUIRED), no browser automation, no device bridge. WebSearch works but sources can't be opened. Public repos DO clone read-only via `git clone` — that's how state is recovered. Playwright + bundled Chromium (`/opt/pw-browsers/chromium`, playwright-core, `--no-sandbox`) works headlessly for verifying built pages. Fit for scheduled runs: authoring/build increments (specs, static apps, client-side code). Not fit: peptide record batches (source retrieval), repo creation, Pages/Vercel config.
-- State-file continuity: whichever repo the state files live in must actually receive the updated copies, or the next run re-discovers everything. Fastest path while the hub is unpublished: upload updated PROJECT-STATE.md + LEARNING-LOG.md to peptide-evidence via `github.com/neeshykha/peptide-evidence/upload/main`.
+- GitHub Pages pattern: deploy-from-branch, main / root. `bin/publish.sh` in the kit does repo-create → push → Pages → About in one idempotent command; verify live with `curl -sI` (first build ~1 min).
+- Peptide dataset source of truth: the **ShipSunday project folder** on Aneesh's Mac (as of 2026-08-23, `~/Documents/ShipSunday/` — the folder name is the durable handle, not the path; it has moved before). Publish only index + compounds/ — `working/` stays private. Scrub vendor names before publishing (index carried nexaph.com references; neutralized in the published copy).
+- State-file continuity: whichever repo the state files live in must actually receive the updated copies (commit + push every run), or the next run re-discovers everything. State repo: **peptide-evidence** until `neeshykha/portfolio` is live, then portfolio.
+- Legacy (Cowork cloud, pre-migration): sandbox GitHub proxy was repo-scoped — read-only clones only, push 403, no repo creation (re-confirmed 2026-09-13); scheduled runs had no WebFetch/browser/device bridge; workaround was staged files + manual `/upload/main` steps or Claude-in-Chrome automation in attended sessions.
 
 ## Routine
 
-**Ship Sunday** — weekly scheduled task, Sundays 10:00 AM ET. Each run: read this file + LEARNING-LOG.md from the repo, deliver the next increment, append log entry, update this file.
+**Ship Sunday** — weekly, Sundays 10:00 AM ET, now invoked via Claude Code (cron `claude -p` on the worker node, or interactively — see kit README). Each run: pull state repo, read this file + LEARNING-LOG.md, deliver the next increment, publish + verify live, append log entry, update this file, push.
